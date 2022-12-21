@@ -8,7 +8,8 @@ import {
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import Nav from '../Nav/Nav';
+import HeaderNav from '../HeaderNav/HeaderNav';
+import FooterNav from '../FooterNav/FooterNav.jsx';
 import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
@@ -19,13 +20,17 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import AddItemPage from '../AddItem/AddItem.jsx';
+import ClosetPage from '../Closet/Closet.jsx';
+import MakeOutfitPage from '../MakeOutfit/MakeOutfit.jsx';
+import OutfitsPage from '../Outfits/Outfits.jsx';
 
 import './App.css';
 
 function App() {
   const dispatch = useDispatch();
 
-  const user = useSelector(store => store.user);
+  const user = useSelector((store) => store.user);
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
@@ -34,7 +39,8 @@ function App() {
   return (
     <Router>
       <div>
-        <Nav />
+        <HeaderNav />
+
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />
@@ -46,6 +52,37 @@ function App() {
             path="/about"
           >
             <AboutPage />
+          </Route>
+          <Route
+            // shows addItem page
+            exact
+            path="/addItem"
+          >
+            <AddItemPage />
+          </Route>
+
+          <Route
+            // shows Closet page
+            exact
+            path="/closet"
+          >
+            <ClosetPage />
+          </Route>
+
+          <Route
+            // shows addItem page
+            exact
+            path="/makeoutfit"
+          >
+            <MakeOutfitPage />
+          </Route>
+
+          <Route
+            // shows addItem page
+            exact
+            path="/outfits"
+          >
+            <OutfitsPage />
           </Route>
 
           {/* For protected routes, the view could show one of several things on the same route.
@@ -68,46 +105,37 @@ function App() {
             <InfoPage />
           </ProtectedRoute>
 
-          <Route
-            exact
-            path="/login"
-          >
-            {user.id ?
-              // If the user is already logged in, 
+          <Route exact path="/login">
+            {user.id ? (
+              // If the user is already logged in,
               // redirect to the /user page
               <Redirect to="/user" />
-              :
+            ) : (
               // Otherwise, show the login page
               <LoginPage />
-            }
+            )}
           </Route>
 
-          <Route
-            exact
-            path="/registration"
-          >
-            {user.id ?
-              // If the user is already logged in, 
+          <Route exact path="/registration">
+            {user.id ? (
+              // If the user is already logged in,
               // redirect them to the /user page
               <Redirect to="/user" />
-              :
+            ) : (
               // Otherwise, show the registration page
               <RegisterPage />
-            }
+            )}
           </Route>
 
-          <Route
-            exact
-            path="/home"
-          >
-            {user.id ?
-              // If the user is already logged in, 
+          <Route exact path="/home">
+            {user.id ? (
+              // If the user is already logged in,
               // redirect them to the /user page
               <Redirect to="/user" />
-              :
+            ) : (
               // Otherwise, show the Landing page
               <LandingPage />
-            }
+            )}
           </Route>
 
           {/* If none of the other routes matched, we will show a 404. */}
@@ -115,7 +143,9 @@ function App() {
             <h1>404</h1>
           </Route>
         </Switch>
+
         <Footer />
+        <FooterNav />
       </div>
     </Router>
   );
