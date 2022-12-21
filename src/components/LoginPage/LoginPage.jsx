@@ -1,12 +1,14 @@
 import React from 'react';
 import LoginForm from '../LoginForm/LoginForm';
 import { useHistory } from 'react-router-dom';
+import logo from '../Images/happy_closet_icon.jpg';
 
 function LoginPage() {
   const history = useHistory();
 
   return (
     <div classFor="login-page">
+      <img src={logo}></img>
       <LoginForm />
 
       <center>

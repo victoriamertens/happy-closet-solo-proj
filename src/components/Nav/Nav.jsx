@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import { useSelector } from 'react-redux';
-import logo from './happy_closet_icon.jpg';
+import logo from '../Images/happy_closet_icon.jpg';
 
 function Nav() {
   const user = useSelector((store) => store.user);
