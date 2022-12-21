@@ -1,3 +1,22 @@
 .footer-nav {
-  background-color: blue;
+  background-color: rgb(7, 221, 207);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.icon-container {
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.nav-icon {
+  margin: auto;
+}
+
+p {
+  margin: 0px;
+  color: white;
 }

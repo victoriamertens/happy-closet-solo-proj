@@ -30,15 +30,16 @@ function FooterNav() {
 
   return (
     <div class="footer-nav">
-      <div>
+      <div class="icon-container">
         <CheckroomIcon
           onClick={toCloset}
           style={{ color: 'white' }}
           className="nav-icon"
         />
+
         <p onClick={toCloset}>Closet</p>
       </div>
-      <div>
+      <div class="icon-container">
         <AddBoxIcon
           onClick={toAddItem}
           style={{ color: 'white' }}
@@ -46,7 +47,7 @@ function FooterNav() {
         />
         <p onClick={toAddItem}>Add Item</p>
       </div>
-      <div>
+      <div class="icon-container">
         <CreateOutlinedIcon
           onClick={toMakeOutfit}
           style={{ color: 'white' }}
@@ -54,7 +55,7 @@ function FooterNav() {
         />
         <p onClick={toMakeOutfit}>Make Outfit</p>
       </div>
-      <div>
+      <div class="icon-container">
         <ViewListOutlinedIcon
           onClick={toOutfits}
           style={{ color: 'white' }}
