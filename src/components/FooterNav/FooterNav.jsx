@@ -1,5 +1,13 @@
 import { useHistory } from 'react-router-dom';
 
+import CheckroomIcon from '@mui/icons-material/Checkroom';
+import AddBoxIcon from '@mui/icons-material/AddBox';
+import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
+import ViewListOutlinedIcon from '@mui/icons-material/ViewListOutlined';
+
+import './FooterNav.css';
+console.log(CheckroomIcon);
+
 function FooterNav() {
   const history = useHistory();
 
@@ -21,8 +29,10 @@ function FooterNav() {
   }
 
   return (
-    <div>
+    <div class="footer-nav">
       <div>
+        <CheckroomIcon onClick={toCloset} style={{ color: 'white' }} />
+
         <p onClick={toCloset}>Closet</p>
       </div>
       <div>
