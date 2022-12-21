@@ -8,6 +8,7 @@ function FooterNav() {
   }
   function toAddItem() {
     console.log('To addItem');
+    history.push('/addItem');
   }
   function toMakeOutfit() {
     console.log('To Make outfit');
