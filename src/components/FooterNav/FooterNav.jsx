@@ -5,6 +5,7 @@ function FooterNav() {
 
   function toCloset() {
     console.log('To closet');
+    history.push('closet');
   }
   function toAddItem() {
     console.log('To addItem');

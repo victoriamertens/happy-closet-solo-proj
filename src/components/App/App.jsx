@@ -21,6 +21,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import AddItemPage from '../AddItem/AddItem.jsx';
+import ClosetPage from '../Closet/Closet.jsx';
 
 import './App.css';
 
@@ -56,6 +57,14 @@ function App() {
             path="/addItem"
           >
             <AddItemPage />
+          </Route>
+
+          <Route
+            // shows Closet page
+            exact
+            path="/closet"
+          >
+            <ClosetPage />
           </Route>
 
           {/* For protected routes, the view could show one of several things on the same route.
