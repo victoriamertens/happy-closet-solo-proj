@@ -17,6 +17,7 @@ function FooterNav() {
   }
   function toOutfits() {
     console.log('To outfits');
+    history.push('/outfits');
   }
 
   return (
