@@ -10,27 +10,25 @@ function Nav() {
 
   return (
     <div className="nav">
-      <Link to="/about">
-        <img src={logo}></img>
-      </Link>
       <div>
         {/* If no user is logged in, show these links */}
         {!user.id && (
           // If there's no user, show login/registration links
-          <Link className="navLink" to="/login">
-            Login / Register
-          </Link>
+          <div>
+            <Link className="navLink" to="/about">
+              About App
+            </Link>
+            <Link className="navLink" to="/login">
+              Login / Register
+            </Link>
+          </div>
         )}
 
         {/* If a user is logged in, show these links */}
         {user.id && (
           <>
-            <Link className="navLink" to="/user">
-              Home
-            </Link>
-
-            <Link className="navLink" to="/info">
-              Info Page
+            <Link className="navLink" to="/about">
+              <img src={logo}></img>
             </Link>
 
             <LogOutButton className="navLink" />
