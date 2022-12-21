@@ -31,17 +31,35 @@ function FooterNav() {
   return (
     <div class="footer-nav">
       <div>
-        <CheckroomIcon onClick={toCloset} style={{ color: 'white' }} />
-
+        <CheckroomIcon
+          onClick={toCloset}
+          style={{ color: 'white' }}
+          className="nav-icon"
+        />
         <p onClick={toCloset}>Closet</p>
       </div>
       <div>
+        <AddBoxIcon
+          onClick={toAddItem}
+          style={{ color: 'white' }}
+          className="nav-icon"
+        />
         <p onClick={toAddItem}>Add Item</p>
       </div>
       <div>
+        <CreateOutlinedIcon
+          onClick={toMakeOutfit}
+          style={{ color: 'white' }}
+          className="nav-icon"
+        />
         <p onClick={toMakeOutfit}>Make Outfit</p>
       </div>
       <div>
+        <ViewListOutlinedIcon
+          onClick={toOutfits}
+          style={{ color: 'white' }}
+          className="nav-icon"
+        />
         <p onClick={toOutfits}>Outfits</p>
       </div>
     </div>
