@@ -9,10 +9,11 @@ function FooterNav() {
   }
   function toAddItem() {
     console.log('To addItem');
-    history.push('/addItem');
+    history.push('/additem');
   }
   function toMakeOutfit() {
     console.log('To Make outfit');
+    history.push('makeoutfit');
   }
   function toOutfits() {
     console.log('To outfits');
