@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 
 function LoginForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const errors = useSelector(store => store.errors);
+  const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
 
   const login = (event) => {
@@ -26,7 +26,7 @@ function LoginForm() {
 
   return (
     <form className="formPanel" onSubmit={login}>
-      <h2>Login</h2>
+      <h2>Sign In</h2>
       {errors.loginMessage && (
         <h3 className="alert" role="alert">
           {errors.loginMessage}
@@ -34,10 +34,10 @@ function LoginForm() {
       )}
       <div>
         <label htmlFor="username">
-          Username:
           <input
             type="text"
             name="username"
+            placeholder="username"
             required
             value={username}
             onChange={(event) => setUsername(event.target.value)}
@@ -46,10 +46,10 @@ function LoginForm() {
       </div>
       <div>
         <label htmlFor="password">
-          Password:
           <input
             type="password"
             name="password"
+            placeholder="password"
             required
             value={password}
             onChange={(event) => setPassword(event.target.value)}
@@ -57,7 +57,7 @@ function LoginForm() {
         </label>
       </div>
       <div>
-        <input className="btn" type="submit" name="submit" value="Log In" />
+        <input className="btn" type="submit" name="submit" value="Sign In" />
       </div>
     </form>
   );

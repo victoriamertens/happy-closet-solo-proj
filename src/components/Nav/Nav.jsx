@@ -3,14 +3,15 @@ import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import { useSelector } from 'react-redux';
+import logo from './happy_closet_icon.jpg';
 
 function Nav() {
   const user = useSelector((store) => store.user);
 
   return (
     <div className="nav">
-      <Link to="/home">
-        <h2 className="nav-title">Prime Solo Project</h2>
+      <Link to="/about">
+        <img src={logo}></img>
       </Link>
       <div>
         {/* If no user is logged in, show these links */}
@@ -35,10 +36,6 @@ function Nav() {
             <LogOutButton className="navLink" />
           </>
         )}
-
-        <Link className="navLink" to="/about">
-          About
-        </Link>
       </div>
     </div>
   );

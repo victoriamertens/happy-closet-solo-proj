@@ -3,11 +3,14 @@
 -- You must use double quotes in every query that user is in:
 -- ex. SELECT * FROM "user";
 -- Otherwise you will have errors!
+
+--Create database called: happy_closet
+
 CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,
     "username" VARCHAR (80) UNIQUE NOT NULL,
     "password" VARCHAR (1000) NOT NULL,
-    "first_name" VARCHAR (80)
+    "name" VARCHAR (80)
 );
 
 CREATE TABLE "items" (
@@ -24,8 +27,8 @@ CREATE TABLE "items" (
 
 CREATE TABLE "outfits" (
     "id" SERIAL PRIMARY KEY,
-    "user_id" INT REFERENCES "users"
-    "favorite" BOOLEAN DEFAULT "false"
+    "user_id" INT REFERENCES "user",
+    "favorite" BOOLEAN DEFAULT false
 );
 
 
@@ -37,7 +40,7 @@ CREATE TABLE "items_outfits" (
 
 CREATE TABLE "wear_log" (
     "id" SERIAL PRIMARY KEY,
-    "user_id" INT REFERENCES "users",
+    "user_id" INT REFERENCES "user",
     "outfit_id" INT REFERENCES "outfits", 
     "comment" VARCHAR (100), 
     "reaction" INT
