@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 function RegisterForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
   const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
 
@@ -15,6 +16,7 @@ function RegisterForm() {
       payload: {
         username: username,
         password: password,
+        name: name,
       },
     });
   }; // end registerUser
@@ -28,12 +30,23 @@ function RegisterForm() {
         </h3>
       )}
       <div>
+        <label htmlFor="first-name">
+          <input
+            name="password"
+            placeholder="your name"
+            value={name}
+            required
+            onChange={(event) => setName(event.target.value)}
+          />
+        </label>
+      </div>
+      <div>
         <label htmlFor="username">
-          Username:
           <input
             type="text"
             name="username"
             value={username}
+            placeholder="username"
             required
             onChange={(event) => setUsername(event.target.value)}
           />
@@ -41,18 +54,19 @@ function RegisterForm() {
       </div>
       <div>
         <label htmlFor="password">
-          Password:
           <input
             type="password"
             name="password"
+            placeholder="password"
             value={password}
             required
             onChange={(event) => setPassword(event.target.value)}
           />
         </label>
       </div>
+
       <div>
-        <input className="btn" type="submit" name="submit" value="Register" />
+        <input className="btn" type="submit" name="submit" value="Sign Up" />
       </div>
     </form>
   );

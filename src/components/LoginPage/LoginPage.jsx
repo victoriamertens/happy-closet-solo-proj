@@ -6,10 +6,11 @@ function LoginPage() {
   const history = useHistory();
 
   return (
-    <div>
+    <div classFor="login-page">
       <LoginForm />
 
       <center>
+        <p>--- OR ---</p>
         <button
           type="button"
           className="btn btn_asLink"
