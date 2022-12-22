@@ -1,11 +1,12 @@
-import { takeEvery } from 'redux-saga/effects';
+import { takeEvery, put } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* fetchCloset() {
   try {
     console.log('In getCloset');
-    const closet = yield axios.get('/closet');
-    console.log('The closet:', closet);
+    const response = yield axios.get('/closet');
+    console.log('The closet:', response);
+    yield put({ type: 'SET_CLOSET', payload: response });
   } catch (error) {
     console.log(error);
   }
