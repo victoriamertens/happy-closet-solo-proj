@@ -1,0 +1,33 @@
+.closet-items {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.closet-items img {
+  width: 55%;
+}
+
+.single-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0px;
+  border: 1px none black;
+}
+
+.single-item p {
+  padding: 10px 20px;
+
+  border-radius: 5px;
+  background-color: rgb(244, 239, 99);
+  margin-bottom: -10px;
+}
+
+.single-item img {
+  /* margin-top: -20px; */
+  z-index: -1;
+  position: relative;
+  border-radius: 5px;
+  box-shadow: 10px 10px 15px rgb(33, 106, 100);
+}
