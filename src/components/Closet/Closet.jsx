@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import './Closet.css';
+
 function Closet() {
   const dispatch = useDispatch();
   const closet = useSelector((store) => store.closet);
