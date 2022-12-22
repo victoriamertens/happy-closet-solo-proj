@@ -3,6 +3,10 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  /* position: static; */
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 .icon-container {
