@@ -12,8 +12,13 @@ function* fetchCloset() {
   }
 }
 
+function* addClothes(action) {
+  console.log('In sagas addClothes:', action);
+}
+
 function* closetSaga() {
   yield takeEvery('GET_CLOSET', fetchCloset);
+  yield takeEvery('ADD_TO_CLOSET', addClothes);
 }
 
 export default closetSaga;
