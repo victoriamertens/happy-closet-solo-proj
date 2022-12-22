@@ -12,17 +12,8 @@ function* fetchCloset() {
   }
 }
 
-function* makeItem(action) {
-  try {
-    console.log('in MakeItem', action);
-  } catch (error) {
-    console.log(error);
-  }
-}
-
 function* closetSaga() {
   yield takeEvery('GET_CLOSET', fetchCloset);
-  yield takeEvery('CLOSET_ANSWER', makeItem);
 }
 
 export default closetSaga;
