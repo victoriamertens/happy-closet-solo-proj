@@ -1,9 +1,11 @@
 import { useState } from 'react';
 
 function AddItem() {
+  const [name, setName] = useState('');
+
   const onSubmit = () => {
     event.preventDefault();
-    console.log('Submitting item');
+    console.log('Submitting item:', name);
   };
 
   return (
@@ -12,7 +14,11 @@ function AddItem() {
         <label for="name">
           <h2>What is your item's Name?</h2>
         </label>
-        <input id="name" type="text"></input>
+        <input
+          id="name"
+          type="text"
+          onChange={(event) => setName(event.target.value)}
+        ></input>
         <p>
           Get Creative! This can be anything from 'Grandma's Vintage Sweater' to
           'Cassandra'.
