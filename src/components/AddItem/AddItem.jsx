@@ -1,11 +1,17 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 function AddItem() {
   const [name, setName] = useState('');
+  const dispatch = useDispatch();
 
   const onSubmit = () => {
     event.preventDefault();
     console.log('Submitting item:', name);
+    dispatch({
+      type: 'CLOSET_ANSWER',
+      payload: { data: name, answer: 'name' },
+    });
   };
 
   return (
