@@ -21,7 +21,7 @@ function Closet() {
         {closet.map((item) => {
           console.log('Here it is!', item);
           return (
-            <div>
+            <div className="single-item">
               <p>{item.name}</p>
               <img key={item.id} src={item.image_url}></img>
             </div>
