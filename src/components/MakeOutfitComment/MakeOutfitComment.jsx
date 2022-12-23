@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 function MakeOutfitComment() {
   const [reaction, setReaction] = useState(0);
   const [comment, setComment] = useState('');
+  const dispatch = useDispatch();
 
   function smileReaction() {
     setReaction(1);
@@ -15,7 +17,8 @@ function MakeOutfitComment() {
   }
 
   function setToStore() {
-    console.log('Comment:', comment, 'REaction:', reaction);
+    console.log('Comment:', comment, 'Reaction:', reaction);
+    dispatch({ type: 'MAKE_OUTFIT_COMMENT', payload: { comment, reaction } });
   }
 
   return (

@@ -9,3 +9,15 @@ export const newOutfit = (state = [], action) => {
       return state;
   }
 };
+
+export const outfitComment = (state = {}, action) => {
+  switch (action.type) {
+    case 'MAKE_OUTFIT_COMMENT':
+      console.log('In store, new outfit comment:', action.payload);
+      return action.payload;
+    case 'RESET_OUTFIT_COMMENT':
+      return {};
+    default:
+      return state;
+  }
+};
