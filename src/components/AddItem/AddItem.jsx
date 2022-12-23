@@ -14,17 +14,21 @@ function AddItem() {
 
   const onSubmit = () => {
     event.preventDefault();
-    console.log('Submitting item:', name, color, brand, cost, imageUrl);
-    dispatch({
-      type: 'CLOSET_ANSWER',
-      payload: { name, color, brand, cost, imageUrl },
-    });
+    if (!name || !color || !cost) {
+      alert('Your item needs a name, color, and cost!');
+    } else if (name && color && cost) {
+      console.log('Submitting item:', name, color, brand, cost, imageUrl);
+      dispatch({
+        type: 'CLOSET_ANSWER',
+        payload: { name, color, brand, cost, imageUrl },
+      });
+      history.push('/addItemReview');
+    }
     //Original Solution, might use again if form becomes componentized.
     // dispatch({
     //   type: 'CLOSET_ANSWER',
     //   payload: { data: name, answer: 'name' },
     // });
-    history.push('/addItemReview');
   };
 
   return (
@@ -43,8 +47,9 @@ function AddItem() {
           'Cassandra'.
         </p>
         <h2>Let's get a few more details</h2>
+        <p>*Required Fields</p>
         <div id="selector">
-          <label for="category">Choose a category:</label>
+          <label for="category">*Choose a category:</label>
           <select name="category" id="category">
             <option value="">Select a category</option>
             <option value="tops">Tops</option>
@@ -53,23 +58,25 @@ function AddItem() {
             <option value="shoes">Shoes</option>
           </select>
         </div>
-        <label for="color">Color:</label>
+        <label for="color">*Color:</label>
         <input
           id="color"
           type="text"
           onChange={(event) => setColor(event.target.value)}
+        ></input>
+
+        <label for="cost">*Initial Cost of Item:</label>
+        <input
+          placeholder="Enter a number"
+          id="cost"
+          type="number"
+          onChange={(event) => setCost(event.target.value)}
         ></input>
         <label for="brand">Brand/Maker:</label>
         <input
           id="brand"
           type="text"
           onChange={(event) => setBrand(event.target.value)}
-        ></input>
-        <label for="cost">Initial Cost of Item:</label>
-        <input
-          id="cost"
-          type="text"
-          onChange={(event) => setCost(event.target.value)}
         ></input>
         <h2>Do you have an image to upload?</h2>
         <label for="image">Image URL:</label>
