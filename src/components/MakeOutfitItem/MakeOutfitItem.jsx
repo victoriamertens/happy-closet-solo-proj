@@ -5,7 +5,10 @@ function MakeOutfitItem({ item }) {
 
   const addOutfitToStore = () => {
     console.log('Adding to store:', item.id);
-    dispatch({ type: 'MAKE_OUTFIT', payload: item.id });
+    dispatch({
+      type: 'MAKE_OUTFIT',
+      payload: { id: item.id, image: item.image_url },
+    });
   };
 
   return (
