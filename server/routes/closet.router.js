@@ -28,11 +28,36 @@ WHERE "user_id" = $1; `;
 /**
  * POST route template
  */
-router.post('/', (req, res) => {
+router.post('/newitem', (req, res) => {
   // POST route code here
-  let queryText = `INSERT INTO "items"
+  console.log('BODY:', req.body, 'USER:', req.user);
+  let data = req.body;
+  let userId = req.user.id;
+  let color = '';
+  let brand = '';
+  if (data.color) {
+    color = data.color;
+  }
+  if (data.brand) {
+    brand = data.brand;
+  }
+
+  let queryTextPost = `INSERT INTO "items"
   ("user_id","name", "color", "cost", "brand", "category_name", "image_url")
   VALUES ($1, $2, $3, $4, $5, $6, $7);`;
+
+  pool
+    .query(queryTextPost, [
+      userId,
+      data.name,
+      color,
+      data.cost,
+      brand,
+      'filler category',
+      data.imageUrl,
+    ])
+    .then(res.sendStatus(201))
+    .catch((error) => res.sendStatus(500));
 });
 
 module.exports = router;

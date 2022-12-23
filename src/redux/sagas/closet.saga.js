@@ -12,8 +12,20 @@ function* fetchCloset() {
   }
 }
 
+function* addClothes(action) {
+  try {
+    console.log('In sagas addClothes:', action);
+    yield axios.post('/closet/newitem', action.payload);
+    yield put({ type: 'RESET_NEW_ITEM' });
+    yield put({ type: 'GET_CLOSET' });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 function* closetSaga() {
   yield takeEvery('GET_CLOSET', fetchCloset);
+  yield takeEvery('ADD_TO_CLOSET', addClothes);
 }
 
 export default closetSaga;
