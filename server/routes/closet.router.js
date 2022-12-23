@@ -33,6 +33,14 @@ router.post('/newitem', (req, res) => {
   console.log('BODY:', req.body, 'USER:', req.user);
   let data = req.body;
   let userId = req.user.id;
+  let color = '';
+  let brand = '';
+  if (data.color) {
+    color = data.color;
+  }
+  if (data.brand) {
+    brand = data.brand;
+  }
 
   let queryTextPost = `INSERT INTO "items"
   ("user_id","name", "color", "cost", "brand", "category_name", "image_url")
@@ -42,9 +50,9 @@ router.post('/newitem', (req, res) => {
     .query(queryTextPost, [
       userId,
       data.name,
-      data.color,
+      color,
       data.cost,
-      data.brand,
+      brand,
       'filler category',
       data.imageUrl,
     ])

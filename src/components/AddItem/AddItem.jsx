@@ -14,9 +14,9 @@ function AddItem() {
 
   const onSubmit = () => {
     event.preventDefault();
-    if (!name || !color || !cost) {
-      alert('Your item needs a name, color, and cost!');
-    } else if (name && color && cost) {
+    if (!name || !cost) {
+      alert('Your item needs a name, category, and cost!');
+    } else if (name && cost) {
       console.log('Submitting item:', name, color, brand, cost, imageUrl);
       dispatch({
         type: 'CLOSET_ANSWER',
