@@ -48,7 +48,7 @@ function AddItem() {
         </p>
         <h2>Let's get a few more details</h2>
         <p>*Required Fields</p>
-        <div id="selector">
+        {/* <div id="selector">
           <label for="category">*Choose a category:</label>
           <select name="category" id="category">
             <option value="">Select a category</option>
@@ -57,7 +57,7 @@ function AddItem() {
             <option value="dress-jumpsuit">Dress/Jumpsuit</option>
             <option value="shoes">Shoes</option>
           </select>
-        </div>
+        </div> */}
         <label for="color">*Color:</label>
         <input
           id="color"
