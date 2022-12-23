@@ -1,6 +1,4 @@
-import { combineReducers } from 'redux';
-
-const closet = (state = [], action) => {
+export const closet = (state = [], action) => {
   switch (action.type) {
     case 'SET_CLOSET':
       return action.payload.data;
@@ -9,7 +7,7 @@ const closet = (state = [], action) => {
   }
 };
 
-const newClothes = (state = {}, action) => {
+export const newClothes = (state = {}, action) => {
   switch (action.type) {
     case 'CLOSET_ANSWER':
       console.log('In store, closet answer:', action.payload);
@@ -19,5 +17,3 @@ const newClothes = (state = {}, action) => {
       return state;
   }
 };
-
-export default combineReducers({ closet, newClothes });

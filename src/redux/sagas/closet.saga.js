@@ -13,7 +13,11 @@ function* fetchCloset() {
 }
 
 function* addClothes(action) {
-  console.log('In sagas addClothes:', action);
+  try {
+    console.log('In sagas addClothes:', action);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 function* closetSaga() {

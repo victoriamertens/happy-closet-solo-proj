@@ -16,6 +16,7 @@ function Closet() {
   }
   if (closet) {
     console.log('in closet conditional');
+    console.log(closet);
     return (
       <div className="closet-items">
         {closet.map((item) => {
