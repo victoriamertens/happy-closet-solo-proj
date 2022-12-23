@@ -15,6 +15,7 @@ function* fetchCloset() {
 function* addClothes(action) {
   try {
     console.log('In sagas addClothes:', action);
+    yield axios.post('/closet/newitem', action.payload);
   } catch (error) {
     console.log(error);
   }
