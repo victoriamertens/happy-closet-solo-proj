@@ -19,9 +19,13 @@ function MakeOutfitComment() {
   }
 
   function setToStore() {
-    console.log('Comment:', comment, 'Reaction:', reaction);
-    dispatch({ type: 'MAKE_OUTFIT_COMMENT', payload: { comment, reaction } });
-    history.push('/makeoutfitreview');
+    if (reaction === 0 || comment === '') {
+      alert("Don't forget to add a comment and a reaction!");
+    } else {
+      console.log('Comment:', comment, 'Reaction:', reaction);
+      dispatch({ type: 'MAKE_OUTFIT_COMMENT', payload: { comment, reaction } });
+      history.push('/makeoutfitreview');
+    }
   }
 
   return (
