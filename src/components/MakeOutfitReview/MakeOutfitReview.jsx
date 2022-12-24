@@ -10,7 +10,7 @@ function MakeOutfitReview() {
 
   function postOutfit() {
     dispatch({ type: 'POST_OUTFIT', payload: [...items, comments] });
-    history.push('/closet');
+    history.push('/outfits');
   }
 
   if (!items || !comments) {
