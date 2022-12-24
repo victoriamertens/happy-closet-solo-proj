@@ -2,8 +2,8 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
+// POST route
 router.post('/newoutfit', (req, res) => {
-  // POST route code here
   console.log('BODY:', req.body, 'USER:', req.user);
 
   //First step, insert into outfits table
