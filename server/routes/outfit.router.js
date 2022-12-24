@@ -23,9 +23,17 @@ router.post('/newoutfit', (req, res) => {
         let item = data[i].id;
         pool
           .query(itemsOutfitsQuery, [item, outfitId])
-          .then((res) => console.log('Entered:', res))
+          .then()
           .catch((err) => console.log(err));
       }
+      console.log('Outfit ID:', outfitId, 'User Id:', userId);
+      let wearLogQuery = `INSERT INTO "wear_log" ("user_id", "outfit_id", "comment", "reaction") VALUES ($1, $2, $3, $4);`;
+      let comment = data[data.length - 1].comment;
+      let reaction = data[data.length - 1].reaction;
+      pool
+        .query(wearLogQuery, [userId, outfitId, comment, reaction])
+        .then()
+        .catch((err) => console.log(err));
     })
     .catch((error) => {
       console.log(error);
