@@ -23,9 +23,22 @@ function* addClothes(action) {
   }
 }
 
+function* postOutfit(action) {
+  try {
+    console.log('Post outfit:', action.payload);
+    yield axios.post('/outfit/newOutfit', action.payload);
+    yield put({ type: 'RESET_NEW_OUTFIT' });
+    yield put({ type: 'RESET_OUTFIT_COMMENT' });
+    yield put({ type: 'GET_CLOSET' });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 function* closetSaga() {
   yield takeEvery('GET_CLOSET', fetchCloset);
   yield takeEvery('ADD_TO_CLOSET', addClothes);
+  yield takeEvery('POST_OUTFIT', postOutfit);
 }
 
 export default closetSaga;

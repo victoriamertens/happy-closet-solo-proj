@@ -24,6 +24,7 @@ import ReviewAddItemPage from '../AddItemReview/AddItemReview.jsx';
 import ClosetPage from '../Closet/Closet.jsx';
 import MakeOutfitPage from '../MakeOutfit/MakeOutfit.jsx';
 import OutfitCommentPage from '../MakeOutfitComment/MakeOutfitComment.jsx';
+import OutfitReviewPage from '../MakeOutfitReview/MakeOutfitReview.jsx';
 import OutfitsPage from '../Outfits/Outfits.jsx';
 
 import './App.css';
@@ -92,6 +93,13 @@ function App() {
             <OutfitCommentPage />
           </Route>
 
+          <Route
+            // shows addItem page
+            exact
+            path="/makeoutfitreview"
+          >
+            <OutfitReviewPage />
+          </Route>
           <Route
             // shows addItem page
             exact

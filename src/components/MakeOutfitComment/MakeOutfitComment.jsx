@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 function MakeOutfitComment() {
   const [reaction, setReaction] = useState(0);
   const [comment, setComment] = useState('');
   const dispatch = useDispatch();
+  const history = useHistory();
 
   function smileReaction() {
     setReaction(1);
@@ -19,6 +21,7 @@ function MakeOutfitComment() {
   function setToStore() {
     console.log('Comment:', comment, 'Reaction:', reaction);
     dispatch({ type: 'MAKE_OUTFIT_COMMENT', payload: { comment, reaction } });
+    history.push('/makeoutfitreview');
   }
 
   return (
