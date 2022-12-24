@@ -24,7 +24,10 @@ router.post('/newoutfit', (req, res) => {
         pool
           .query(itemsOutfitsQuery, [item, outfitId])
           .then()
-          .catch((err) => console.log(err));
+          .catch((err) => {
+            console.log(err);
+            res.sendStatus(500);
+          });
       }
       console.log('Outfit ID:', outfitId, 'User Id:', userId);
       let wearLogQuery = `INSERT INTO "wear_log" ("user_id", "outfit_id", "comment", "reaction") VALUES ($1, $2, $3, $4);`;
@@ -33,7 +36,10 @@ router.post('/newoutfit', (req, res) => {
       pool
         .query(wearLogQuery, [userId, outfitId, comment, reaction])
         .then()
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err);
+          res.sendStatus(500);
+        });
     })
     .catch((error) => {
       console.log(error);
