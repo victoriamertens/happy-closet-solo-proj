@@ -21,3 +21,13 @@ export const outfitComment = (state = {}, action) => {
       return state;
   }
 };
+
+export const outfits = (state = [], action) => {
+  switch (action.type) {
+    case 'SET_OUTFITS':
+      console.log('In store, set outfits:', action.payload);
+      return action.payload;
+    default:
+      return state;
+  }
+};

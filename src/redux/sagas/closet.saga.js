@@ -40,6 +40,7 @@ function* getOutfits() {
     console.log('Getting outfits');
     const response = yield axios.get('/outfit');
     console.log(response);
+    yield put('SET_OUTFITS', response);
   } catch (error) {
     console.log(error);
   }
