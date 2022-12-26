@@ -69,6 +69,7 @@ router.get('/', (req, res) => {
     .query(outfitsQueryText, [userId])
     .then((response) => {
       console.log(response.rows);
+      res.send(response.rows);
     })
     .catch((error) => {
       console.log(error);
