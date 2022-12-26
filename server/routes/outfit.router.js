@@ -55,7 +55,25 @@ router.post('/newoutfit', (req, res) => {
 });
 
 router.get('/', (req, res) => {
-  console.log('in router outfit for get');
+  console.log('in router outfit for get:', req.user.id);
+  let userId = req.user.id;
+  let outfitsQueryText = `SELECT "wear_log"."outfit_id", "comment", "reaction", "item_id", "name", "color", "cost", "brand", "image_url" 
+  FROM "wear_log" 
+  JOIN "outfits" ON "outfits"."id" = "wear_log"."outfit_id"
+  JOIN "items_outfits" ON "items_outfits"."outfit_id" = "outfits"."id"
+  JOIN "items" ON "items"."id" = "items_outfits"."item_id"
+  WHERE "wear_log"."user_id" = $1;
+  `;
+
+  pool
+    .query(outfitsQueryText, [userId])
+    .then((response) => {
+      console.log(response.rows);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+    });
 });
 
 module.exports = router;
