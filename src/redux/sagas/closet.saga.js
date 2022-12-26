@@ -35,10 +35,21 @@ function* postOutfit(action) {
   }
 }
 
+function* getOutfits() {
+  try {
+    console.log('Getting outfits');
+    const response = yield axios.get('/outfit');
+    console.log(response);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 function* closetSaga() {
   yield takeEvery('GET_CLOSET', fetchCloset);
   yield takeEvery('ADD_TO_CLOSET', addClothes);
   yield takeEvery('POST_OUTFIT', postOutfit);
+  yield takeEvery('GET_OUTFITS', getOutfits);
 }
 
 export default closetSaga;

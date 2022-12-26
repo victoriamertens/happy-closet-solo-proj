@@ -54,4 +54,8 @@ router.post('/newoutfit', (req, res) => {
     });
 });
 
+router.get('/', (req, res) => {
+  console.log('in router outfit for get');
+});
+
 module.exports = router;
