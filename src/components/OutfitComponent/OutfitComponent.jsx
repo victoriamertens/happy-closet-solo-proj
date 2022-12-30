@@ -7,6 +7,7 @@ function OutfitComponent({ items }) {
       {items.urls.map((url) => {
         return <img src={url}></img>;
       })}
+      <p>{items.outfitComment}</p>
     </div>
   );
 }

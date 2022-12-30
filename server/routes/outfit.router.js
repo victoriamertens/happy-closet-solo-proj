@@ -80,12 +80,20 @@ router.get('/', (req, res) => {
           lastItemId = item.outfit_id;
           urlArr.push(item.image_url);
         } else if (i + 1 === outfits.length) {
-          let object = { outfitId: lastItemId, urls: urlArr };
+          let object = {
+            outfitId: lastItemId,
+            outfitComment: item.comment,
+            urls: urlArr,
+          };
           finalArr.push(object);
         } else if (item.outfit_id === lastItemId) {
           urlArr.push(item.image_url);
         } else if (item.outfit_id !== lastItemId) {
-          let object = { outfitId: lastItemId, urls: urlArr };
+          let object = {
+            outfitId: lastItemId,
+            outfitComment: item.comment,
+            urls: urlArr,
+          };
           finalArr.push(object);
           lastItemId = item.outfit_id;
           urlArr = [item.image_url];
