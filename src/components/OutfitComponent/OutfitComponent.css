@@ -1,3 +1,18 @@
 .outfit-card {
-  background-color: blue;
+  background-color: rgba(211, 219, 70, 0.91);
+}
+
+.outfit-card {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid black;
+  width: 90%;
+  flex-wrap: wrap;
+}
+
+.outfit-card img {
+  width: 100px;
+  margin: 10px;
 }
