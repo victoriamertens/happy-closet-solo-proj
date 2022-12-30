@@ -4,10 +4,17 @@ function OutfitComponent({ items }) {
   console.log(items);
   return (
     <div class="outfit-card" key={items.outfitId}>
-      {items.urls.map((url) => {
-        return <img src={url}></img>;
-      })}
+      <div class="images">
+        {items.urls.map((url) => {
+          return <img src={url}></img>;
+        })}
+      </div>
       <p>{items.outfitComment}</p>
+      <div class="reaction">
+        {items.outfitReaction === 1 && <p>:)</p>}
+        {items.outfitReaction === 2 && <p>:/</p>}
+        {items.outfitReaction === 3 && <p>:(</p>}
+      </div>
     </div>
   );
 }

@@ -83,6 +83,7 @@ router.get('/', (req, res) => {
           let object = {
             outfitId: lastItemId,
             outfitComment: item.comment,
+            outfitReaction: item.reaction,
             urls: urlArr,
           };
           finalArr.push(object);
@@ -92,6 +93,7 @@ router.get('/', (req, res) => {
           let object = {
             outfitId: lastItemId,
             outfitComment: item.comment,
+            outfitReaction: item.reaction,
             urls: urlArr,
           };
           finalArr.push(object);
