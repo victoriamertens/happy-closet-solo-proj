@@ -26,7 +26,7 @@ function Closet() {
             <div className="single-item">
               <p>{item.name}</p>
               <img key={item.id} src={item.image_url}></img>
-              <ClosetItem />
+              <ClosetItem item={item} />
             </div>
           );
         })}
