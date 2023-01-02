@@ -55,7 +55,7 @@ function ClosetDetails() {
   if (editBtn) {
     return (
       <div class="edit-details">
-        <EditDetail data={store.name} field="Name" />
+        <EditDetail data={store.name} field="Name" id={store.id} />
         <button onClick={cancelEdit}>Cancel Edit</button>
       </div>
     );

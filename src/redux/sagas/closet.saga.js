@@ -57,12 +57,23 @@ function* getDetails(action) {
   }
 }
 
+function* updateField(action) {
+  try {
+    console.log('Updating Field:', action.payload);
+    yield axios.put(`/closet/details/${action.payload}`);
+    yield put({ type: 'GET_CLOSET' });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 function* closetSaga() {
   yield takeEvery('GET_CLOSET', fetchCloset);
   yield takeEvery('ADD_TO_CLOSET', addClothes);
   yield takeEvery('POST_OUTFIT', postOutfit);
   yield takeEvery('GET_OUTFITS', getOutfits);
   yield takeEvery('GET_DETAILS', getDetails);
+  yield takeEvery('UPDATE_FIELD', updateField);
 }
 
 export default closetSaga;

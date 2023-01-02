@@ -1,9 +1,13 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 function ClosetItemEdit(props) {
   console.log(props);
   const [editBtn, setEditBtn] = useState(false);
   const [detail, setDetail] = useState('');
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   function editField() {
     console.log('in edit field:', props.field);
@@ -17,6 +21,11 @@ function ClosetItemEdit(props) {
 
   function updateField() {
     console.log('Updating Field:', detail, props.field);
+    dispatch({
+      type: 'UPDATE_FIELD',
+      payload: { field: props.field, data: detail, id: props.id },
+    });
+    // history.push('/closet');
   }
 
   if (!editBtn) {
