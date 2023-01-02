@@ -14,7 +14,7 @@ function FooterNav() {
 
   function toCloset() {
     console.log('To closet');
-    history.push('closet');
+    history.push('/closet');
   }
   function toAddItem() {
     console.log('To addItem');
@@ -22,7 +22,7 @@ function FooterNav() {
   }
   function toMakeOutfit() {
     console.log('To Make outfit');
-    history.push('makeoutfit');
+    history.push('/makeoutfit');
   }
   function toOutfits() {
     console.log('To outfits');
