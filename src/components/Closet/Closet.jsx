@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import './Closet.css';
+import ClosetItem from '../ClosetItem/ClosetItem.jsx';
 
 function Closet() {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ function Closet() {
             <div className="single-item">
               <p>{item.name}</p>
               <img key={item.id} src={item.image_url}></img>
+              <ClosetItem />
             </div>
           );
         })}
