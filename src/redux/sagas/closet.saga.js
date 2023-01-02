@@ -46,10 +46,10 @@ function* getOutfits() {
   }
 }
 
-function* getDetails() {
+function* getDetails(action) {
   try {
-    console.log('Getting details');
-    const response = yield axios.get('/closet/deatils');
+    console.log('Getting details:', action.payload);
+    const response = yield axios.get('/closet/deatils/' + action.payload);
     // console.log(response);
     // yield put({ type: 'SET_OUTFITS', payload: response.data });
   } catch (error) {
