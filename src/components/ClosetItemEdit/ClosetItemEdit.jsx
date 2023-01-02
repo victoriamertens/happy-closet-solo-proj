@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
+import './ClosetItemEdit.css';
+
 function ClosetItemEdit(props) {
   console.log(props);
   const [editBtn, setEditBtn] = useState(false);

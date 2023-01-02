@@ -3,17 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 
 import EditDetail from '../ClosetItemEdit/ClosetItemEdit.jsx';
+import './ClosetDetails.css';
 
 function ClosetDetails() {
   const dispatch = useDispatch();
   const { id } = useParams();
   const store = useSelector((store) => store.itemDetails);
   const [editBtn, setEditBtn] = useState(false);
-  //state of the item details for editing
-  const [color, setColor] = useState(store.color);
-  const [name, setname] = useState(store.name);
-  const [category, setCategory] = useState(store.category);
-  const [cost, setCost] = useState(store.cost);
 
   useEffect(() => {
     dispatch({ type: 'GET_DETAILS', payload: id });
