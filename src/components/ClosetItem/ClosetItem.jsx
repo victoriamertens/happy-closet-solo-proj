@@ -6,6 +6,7 @@ function ClosetItem({ item }) {
 
   function navigateDetails() {
     console.log('in Navigate details, id:', item.id);
+    history.push(`/details/` + item.id);
   }
 
   return (
