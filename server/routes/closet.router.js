@@ -11,7 +11,8 @@ router.get('/', (req, res) => {
   let queryTextGet = `
 SELECT * 
 FROM "items" 
-WHERE "user_id" = $1; `;
+WHERE "user_id" = $1
+ORDER BY "id" DESC; `;
 
   pool
     .query(queryTextGet, [req.user.id])
@@ -34,7 +35,7 @@ router.get('/details/:id', (req, res) => {
   let queryTextGet = `
 SELECT * 
 FROM "items" 
-WHERE "user_id" = $1 AND "id" = $2; `;
+WHERE "user_id" = $1 AND "id" = $2;`;
 
   pool
     .query(queryTextGet, [req.user.id, req.params.id])

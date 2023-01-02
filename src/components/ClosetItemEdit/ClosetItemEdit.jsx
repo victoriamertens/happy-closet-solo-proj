@@ -25,7 +25,7 @@ function ClosetItemEdit(props) {
       type: 'UPDATE_FIELD',
       payload: { field: props.field, data: detail, id: props.id },
     });
-    // history.push('/closet');
+    history.push(`/closet`);
   }
 
   if (!editBtn) {
