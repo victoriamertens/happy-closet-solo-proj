@@ -22,13 +22,7 @@ function Closet() {
       <div className="closet-items">
         {closet.map((item) => {
           console.log('Here it is!', item);
-          return (
-            <div className="single-item">
-              <p>{item.name}</p>
-              <img key={item.id} src={item.image_url}></img>
-              <ClosetItem item={item} />
-            </div>
-          );
+          return <ClosetItem item={item} />;
         })}
       </div>
     );
