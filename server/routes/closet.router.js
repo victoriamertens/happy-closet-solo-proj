@@ -26,6 +26,29 @@ WHERE "user_id" = $1; `;
 });
 
 /**
+ * GET Closet Item Details
+ */
+router.get('/details/:id', (req, res) => {
+  // GET route code here
+  console.log('In closet GET router:', req.params.id);
+  let queryTextGet = `
+SELECT * 
+FROM "items" 
+WHERE "user_id" = $1 AND "id" = $2; `;
+
+  pool
+    .query(queryTextGet, [req.user.id, req.params.id])
+    .then((response) => {
+      console.log(response.rows);
+      res.send(response.rows);
+    })
+    .catch((error) => {
+      console.log('Catch:', error);
+      res.sendStatus(500);
+    });
+});
+
+/**
  * POST route template
  */
 router.post('/newitem', (req, res) => {

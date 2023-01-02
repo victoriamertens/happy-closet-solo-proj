@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import errors from './errors.reducer';
 import user from './user.reducer';
-import { closet, newClothes } from './closet.reducer.js';
+import { closet, newClothes, itemDetails } from './closet.reducer.js';
 import { newOutfit, outfitComment, outfits } from './outfit.reducer.js';
 
 // rootReducer is the primary reducer for our entire project
@@ -18,6 +18,7 @@ const rootReducer = combineReducers({
   newOutfit,
   outfitComment,
   outfits,
+  itemDetails,
 });
 
 export default rootReducer;
