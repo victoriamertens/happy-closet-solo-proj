@@ -86,16 +86,18 @@ router.post('/newitem', (req, res) => {
 //PUT route for closet item details
 router.put('/details/:id', (req, res) => {
   console.log('In closet/details PUT router:', req.params.id);
-  let queryTextGet = `
-SELECT * 
-FROM "items" 
-WHERE "user_id" = $1 AND "id" = $2; `;
+  let newInput = req.body.payload.data;
+  let columnName = req.body.payload.field;
+  let queryTextPut = `
+  UPDATE "items"  
+  SET ${columnName} = '${newInput}'
+  WHERE "user_id" = $1 AND "id" = $2;`;
 
   pool
-    .query(queryTextGet, [req.user.id, req.params.id])
+    .query(queryTextPut, [req.user.id, req.params.id])
     .then((response) => {
-      console.log(response.rows);
-      res.send(response.rows);
+      console.log('It came back!', response);
+      res.sendStatus(200);
     })
     .catch((error) => {
       console.log('Catch:', error);
