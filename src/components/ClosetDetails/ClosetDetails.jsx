@@ -1,4 +1,8 @@
+import { useParams } from 'react-router-dom';
+
 function ClosetDetails() {
-  return <p>Testing Closet Details</p>;
+  const { id } = useParams();
+
+  return <p>Testing Closet Details: {id}</p>;
 }
 export default ClosetDetails;
