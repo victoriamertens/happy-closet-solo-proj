@@ -51,7 +51,7 @@ function* getDetails(action) {
     console.log('Getting details:', action.payload);
     const response = yield axios.get(`/closet/details/${action.payload}`);
     console.log(response.data[0]);
-    // yield put({ type: 'SET_OUTFITS', payload: response.data });
+    yield put({ type: 'SET_ITEM_DETAILS', payload: response.data[0] });
   } catch (error) {
     console.log(error);
   }
