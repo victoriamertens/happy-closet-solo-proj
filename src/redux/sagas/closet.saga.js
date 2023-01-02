@@ -60,7 +60,9 @@ function* getDetails(action) {
 function* updateField(action) {
   try {
     console.log('Updating Field:', action.payload);
-    yield axios.put(`/closet/details/${action.payload}`);
+    yield axios.put(`/closet/details/${action.payload.id}`, {
+      payload: action.payload,
+    });
     yield put({ type: 'GET_CLOSET' });
   } catch (error) {
     console.log(error);
