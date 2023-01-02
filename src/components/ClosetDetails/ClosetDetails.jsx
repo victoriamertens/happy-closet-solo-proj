@@ -42,8 +42,14 @@ function ClosetDetails() {
         <p>Cost: {store.cost}</p>
         <p>Color: {store.color}</p>
         <p>Category: {store.category}</p>
-        <button onClick={editItem}>Edit</button>
-        <button onClick={deleteItem}>DELETE</button>
+        <div class="buttons">
+          <button id="edit" onClick={editItem}>
+            Edit
+          </button>
+          <button id="delete" onClick={deleteItem}>
+            DELETE
+          </button>
+        </div>
       </div>
     );
   }
