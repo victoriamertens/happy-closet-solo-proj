@@ -106,4 +106,25 @@ router.put('/details/:id', (req, res) => {
     });
 });
 
+//DELETE route for closet item
+router.delete('/delete/:id', (req, res) => {
+  console.log('In delete router:', req.params.id);
+
+  let queryTextDelete = `
+  UPDATE "items"  
+  SET ${columnName} = '${newInput}'
+  WHERE "user_id" = $1 AND "id" = $2;`;
+
+  pool
+    .query(queryTextPut, [req.user.id, req.params.id])
+    .then((response) => {
+      console.log('It came back!', response);
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log('Catch:', error);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = router;

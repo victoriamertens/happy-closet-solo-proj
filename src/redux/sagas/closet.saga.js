@@ -71,8 +71,8 @@ function* updateField(action) {
 
 function* deleteItem(action) {
   try {
-    console.log('Updating Field:', action.payload);
-    yield axios.put(`/closet/details/${action.payload.id}`, {
+    console.log('Delteing Item:', action.payload);
+    yield axios.delete(`/closet/delete/${action.payload}`, {
       payload: action.payload,
     });
     yield put({ type: 'GET_CLOSET' });
