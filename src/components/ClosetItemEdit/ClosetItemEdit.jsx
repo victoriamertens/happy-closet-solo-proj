@@ -52,7 +52,7 @@ function ClosetItemEdit(props) {
 
   if (editBtn) {
     return (
-      <div>
+      <div class="edit-field">
         <label for={props.field}>{props.field}</label>
         <input
           id={props.field}
