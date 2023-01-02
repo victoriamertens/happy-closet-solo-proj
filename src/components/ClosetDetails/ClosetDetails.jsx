@@ -20,11 +20,6 @@ function ClosetDetails() {
     console.log('in UseEffect');
   }, []);
 
-  // useEffect(() => {
-  //   dispatch({ type: 'GET_DETAILS', payload: id });
-  //   console.log('in UseEffect for edit btn');
-  // }, [editBtn]);
-
   function editItem() {
     console.log('in edit button');
     setEditBtn(!editBtn);
@@ -32,6 +27,11 @@ function ClosetDetails() {
 
   function deleteItem() {
     console.log('in delete button');
+  }
+
+  function cancelEdit() {
+    console.log('in cancel edit');
+    setEditBtn(!editBtn);
   }
 
   if (!store) {
@@ -56,6 +56,7 @@ function ClosetDetails() {
     return (
       <div class="edit-details">
         <EditDetail name={store.name} />
+        <button onClick={cancelEdit}>Cancel Edit</button>
       </div>
     );
   }
