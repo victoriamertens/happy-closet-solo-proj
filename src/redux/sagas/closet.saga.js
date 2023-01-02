@@ -46,11 +46,23 @@ function* getOutfits() {
   }
 }
 
+function* getDetails() {
+  try {
+    console.log('Getting details');
+    const response = yield axios.get('/closet/deatils');
+    // console.log(response);
+    // yield put({ type: 'SET_OUTFITS', payload: response.data });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 function* closetSaga() {
   yield takeEvery('GET_CLOSET', fetchCloset);
   yield takeEvery('ADD_TO_CLOSET', addClothes);
   yield takeEvery('POST_OUTFIT', postOutfit);
   yield takeEvery('GET_OUTFITS', getOutfits);
+  yield takeEvery('GET_DETAILS', getDetails);
 }
 
 export default closetSaga;
