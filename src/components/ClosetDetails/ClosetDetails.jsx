@@ -56,6 +56,11 @@ function ClosetDetails() {
     return (
       <div class="edit-details">
         <EditDetail data={store.name} field="name" id={store.name} />
+        <EditDetail
+          data={store.image_url}
+          field="image_url"
+          id={store.image_url}
+        />
         <EditDetail data={store.cost} field="cost" id={store.cost} />
         <EditDetail data={store.color} field="color" id={store.color} />
         <EditDetail

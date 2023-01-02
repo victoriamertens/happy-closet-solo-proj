@@ -28,6 +28,15 @@ function ClosetItemEdit(props) {
     history.push(`/closet`);
   }
 
+  if (!editBtn && props.field === 'image_url') {
+    return (
+      <div class="edit-field">
+        <img src={props.data}></img>
+        <button onClick={editField}>Edit</button>
+      </div>
+    );
+  }
+
   if (!editBtn) {
     return (
       <div class="edit-field">
