@@ -54,4 +54,61 @@ router.post('/newoutfit', (req, res) => {
     });
 });
 
+router.get('/', (req, res) => {
+  console.log('in router outfit for get:', req.user.id);
+  let userId = req.user.id;
+  let outfitsQueryText = `SELECT "wear_log"."outfit_id", "comment", "reaction", "item_id", "image_url" 
+  FROM "wear_log" 
+  JOIN "outfits" ON "outfits"."id" = "wear_log"."outfit_id"
+  JOIN "items_outfits" ON "items_outfits"."outfit_id" = "outfits"."id"
+  JOIN "items" ON "items"."id" = "items_outfits"."item_id"
+  WHERE "wear_log"."user_id" = $1;
+  `;
+
+  pool
+    .query(outfitsQueryText, [userId])
+    .then((response) => {
+      console.log('RESPONSE:', response.rows);
+      let outfits = response.rows;
+      let finalArr = [];
+      let urlArr = [];
+      let lastItemId = 0;
+      for (let i = 0; i < outfits.length - 1; i++) {
+        let item = outfits[i];
+        console.log('ITEM:', item);
+        if (lastItemId === 0) {
+          lastItemId = item.outfit_id;
+          urlArr.push(item.image_url);
+        } else if (i + 1 === outfits.length) {
+          let object = {
+            outfitId: lastItemId,
+            outfitComment: item.comment,
+            outfitReaction: item.reaction,
+            urls: urlArr,
+          };
+          finalArr.push(object);
+        } else if (item.outfit_id === lastItemId) {
+          urlArr.push(item.image_url);
+        } else if (item.outfit_id !== lastItemId) {
+          let object = {
+            outfitId: lastItemId,
+            outfitComment: item.comment,
+            outfitReaction: item.reaction,
+            urls: urlArr,
+          };
+          finalArr.push(object);
+          lastItemId = item.outfit_id;
+          urlArr = [item.image_url];
+        }
+      }
+
+      console.log('FianlARR:', finalArr);
+      res.send(finalArr);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = router;
