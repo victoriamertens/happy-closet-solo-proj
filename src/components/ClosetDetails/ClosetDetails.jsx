@@ -23,6 +23,7 @@ function ClosetDetails() {
 
   function deleteItem() {
     console.log('in delete button');
+    dispatch({ type: 'DELETE_ITEM', payload: id });
   }
 
   function cancelEdit() {

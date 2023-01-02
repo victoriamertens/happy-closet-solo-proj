@@ -69,6 +69,18 @@ function* updateField(action) {
   }
 }
 
+function* deleteItem(action) {
+  try {
+    console.log('Updating Field:', action.payload);
+    yield axios.put(`/closet/details/${action.payload.id}`, {
+      payload: action.payload,
+    });
+    yield put({ type: 'GET_CLOSET' });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 function* closetSaga() {
   yield takeEvery('GET_CLOSET', fetchCloset);
   yield takeEvery('ADD_TO_CLOSET', addClothes);
@@ -76,6 +88,7 @@ function* closetSaga() {
   yield takeEvery('GET_OUTFITS', getOutfits);
   yield takeEvery('GET_DETAILS', getDetails);
   yield takeEvery('UPDATE_FIELD', updateField);
+  yield takeEvery('DELETE_ITEM', deleteItem);
 }
 
 export default closetSaga;
