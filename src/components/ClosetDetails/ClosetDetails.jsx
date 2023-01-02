@@ -12,6 +12,15 @@ function ClosetDetails() {
     dispatch({ type: 'GET_DETAILS', payload: id });
     console.log('in UseEffect');
   }, []);
+
+  function editItem() {
+    console.log('in edit button');
+  }
+
+  function deleteItem() {
+    console.log('in delete button');
+  }
+
   if (!store) {
     return <p>Collecting your item's details</p>;
   }
@@ -22,6 +31,8 @@ function ClosetDetails() {
       <p>Cost: {store.cost}</p>
       <p>Color: {store.color}</p>
       <p>Category: {store.category}</p>
+      <button onClick={editItem}>Edit</button>
+      <button onClick={deleteItem}>DELETE</button>
     </div>
   );
 }
