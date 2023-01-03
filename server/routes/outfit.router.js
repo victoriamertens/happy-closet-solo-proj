@@ -68,37 +68,41 @@ router.get('/', (req, res) => {
   pool
     .query(outfitsQueryText, [userId])
     .then((response) => {
-      console.log('RESPONSE:', response.rows);
       let outfits = response.rows;
+      //finalArr is being built by loop. This will be sent to outfits reducer.
       let finalArr = [];
       let urlArr = [];
-      let lastItemId = 0;
-      for (let i = 0; i < outfits.length - 1; i++) {
+      for (let i = 0; i < outfits.length; i++) {
+        //these variables are set because they determine what action is taken by the loop to build finalArr
         let item = outfits[i];
-        console.log('ITEM:', item);
-        if (lastItemId === 0) {
-          lastItemId = item.outfit_id;
+        let nextItem = outfits[i + 1];
+        //This conditional is run first to grab the last point in the array
+        //prevents item.outfit_id from being undefined
+        if (i + 1 === outfits.length) {
           urlArr.push(item.image_url);
-        } else if (i + 1 === outfits.length) {
           let object = {
-            outfitId: lastItemId,
+            outfitId: item.outfit_id,
             outfitComment: item.comment,
             outfitReaction: item.reaction,
             urls: urlArr,
           };
           finalArr.push(object);
-        } else if (item.outfit_id === lastItemId) {
+          //Conditional if current outfit id and next outfit id don't match
+        } else if (item.outfit_id !== nextItem.outfit_id) {
           urlArr.push(item.image_url);
-        } else if (item.outfit_id !== lastItemId) {
           let object = {
-            outfitId: lastItemId,
+            outfitId: item.outfit_id,
             outfitComment: item.comment,
             outfitReaction: item.reaction,
             urls: urlArr,
           };
           finalArr.push(object);
-          lastItemId = item.outfit_id;
-          urlArr = [item.image_url];
+          urlArr = [];
+          //Conditional if the item is the last one in the log
+        } else if (item.outfit_id === nextItem.outfit_id) {
+          urlArr.push(item.image_url);
+        } else if (i === 0) {
+          urlArr.push(item.image_url);
         }
       }
 
