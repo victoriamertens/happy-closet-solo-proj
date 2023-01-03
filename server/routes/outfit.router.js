@@ -72,33 +72,33 @@ router.get('/', (req, res) => {
       let outfits = response.rows;
       let finalArr = [];
       let urlArr = [];
-      let lastItemId = 0;
-      for (let i = 0; i < outfits.length - 1; i++) {
+      for (let i = 0; i < outfits.length; i++) {
         let item = outfits[i];
-        console.log('ITEM:', item);
-        if (lastItemId === 0) {
-          lastItemId = item.outfit_id;
+        let nextItem = outfits[i + 1];
+        console.log('ITEM:', item, nextItem);
+        if (i === 0) {
           urlArr.push(item.image_url);
         } else if (i + 1 === outfits.length) {
-          let object = {
-            outfitId: lastItemId,
-            outfitComment: item.comment,
-            outfitReaction: item.reaction,
-            urls: urlArr,
-          };
-          finalArr.push(object);
-        } else if (item.outfit_id === lastItemId) {
           urlArr.push(item.image_url);
-        } else if (item.outfit_id !== lastItemId) {
           let object = {
-            outfitId: lastItemId,
+            outfitId: item.outfit_id,
             outfitComment: item.comment,
             outfitReaction: item.reaction,
             urls: urlArr,
           };
           finalArr.push(object);
-          lastItemId = item.outfit_id;
-          urlArr = [item.image_url];
+        } else if (item.outfit_id === nextItem.outfit_id) {
+          urlArr.push(item.image_url);
+        } else if (item.outfit_id !== nextItem.outfit_id) {
+          urlArr.push(item.image_url);
+          let object = {
+            outfitId: item.outfit_id,
+            outfitComment: item.comment,
+            outfitReaction: item.reaction,
+            urls: urlArr,
+          };
+          finalArr.push(object);
+          urlArr = [];
         }
       }
 
