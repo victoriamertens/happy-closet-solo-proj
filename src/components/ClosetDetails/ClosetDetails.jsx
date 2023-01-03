@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 
@@ -10,6 +10,7 @@ function ClosetDetails() {
   const { id } = useParams();
   const store = useSelector((store) => store.itemDetails);
   const [editBtn, setEditBtn] = useState(false);
+  const history = useHistory();
 
   useEffect(() => {
     dispatch({ type: 'GET_DETAILS', payload: id });
@@ -19,6 +20,7 @@ function ClosetDetails() {
   function editItem() {
     console.log('in edit button');
     setEditBtn(!editBtn);
+    history.push(`/editdetails/${id}`);
   }
 
   function deleteItem() {
