@@ -23,11 +23,15 @@ function ClosetItemEdit(props) {
 
   function updateField() {
     console.log('Updating Field:', detail, props.field);
-    dispatch({
-      type: 'UPDATE_FIELD',
-      payload: { field: props.field, data: detail, id: props.id },
-    });
-    history.push(`/closet`);
+    if (detail === '') {
+      alert('Oops! Looks like your text field is empty');
+    } else {
+      dispatch({
+        type: 'UPDATE_FIELD',
+        payload: { field: props.field, data: detail, id: props.id },
+      });
+      history.push(`/closet`);
+    }
   }
 
   if (!editBtn && props.field === 'image_url') {
