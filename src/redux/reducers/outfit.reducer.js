@@ -3,6 +3,13 @@ export const newOutfit = (state = [], action) => {
     case 'MAKE_OUTFIT':
       console.log('In store, new outfit item:', action.payload);
       return [...state, action.payload];
+    case 'REMOVE_ITEM_FROM_OUTFIT':
+      const newArr = state.filter((item) => {
+        console.log('Each ITem:', item.id !== Number(action.payload));
+        return item.id !== Number(action.payload);
+      });
+      console.log('NewARR:', newArr);
+      return newArr;
     case 'RESET_NEW_OUTFIT':
       return [];
     default:
