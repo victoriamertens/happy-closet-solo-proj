@@ -23,9 +23,72 @@ function* addClothes(action) {
   }
 }
 
+function* postOutfit(action) {
+  try {
+    console.log('Post outfit:', action.payload);
+    yield axios.post('/outfit/newOutfit', action.payload);
+    yield put({ type: 'RESET_NEW_OUTFIT' });
+    yield put({ type: 'RESET_OUTFIT_COMMENT' });
+    yield put({ type: 'GET_CLOSET' });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function* getOutfits() {
+  try {
+    console.log('Getting outfits');
+    const response = yield axios.get('/outfit');
+    console.log(response);
+    yield put({ type: 'SET_OUTFITS', payload: response.data });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function* getDetails(action) {
+  try {
+    console.log('Getting details:', action.payload);
+    const response = yield axios.get(`/closet/details/${action.payload}`);
+    console.log(response.data[0]);
+    yield put({ type: 'SET_ITEM_DETAILS', payload: response.data[0] });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function* updateField(action) {
+  try {
+    console.log('Updating Field:', action.payload);
+    yield axios.put(`/closet/details/${action.payload.id}`, {
+      payload: action.payload,
+    });
+    yield put({ type: 'GET_CLOSET' });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function* deleteItem(action) {
+  try {
+    console.log('Delteing Item:', action.payload);
+    yield axios.delete(`/closet/delete/${action.payload}`, {
+      payload: action.payload,
+    });
+    yield put({ type: 'GET_CLOSET' });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 function* closetSaga() {
   yield takeEvery('GET_CLOSET', fetchCloset);
   yield takeEvery('ADD_TO_CLOSET', addClothes);
+  yield takeEvery('POST_OUTFIT', postOutfit);
+  yield takeEvery('GET_OUTFITS', getOutfits);
+  yield takeEvery('GET_DETAILS', getDetails);
+  yield takeEvery('UPDATE_FIELD', updateField);
+  yield takeEvery('DELETE_ITEM', deleteItem);
 }
 
 export default closetSaga;
