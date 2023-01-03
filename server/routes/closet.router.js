@@ -80,7 +80,10 @@ router.post('/newitem', (req, res) => {
       data.imageUrl,
     ])
     .then(res.sendStatus(201))
-    .catch((error) => res.sendStatus(500));
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+    });
 });
 
 //PUT route for closet item details

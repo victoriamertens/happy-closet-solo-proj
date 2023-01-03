@@ -9,7 +9,7 @@ function AddItemReview() {
   const addToCloset = () => {
     dispatch({ type: 'ADD_TO_CLOSET', payload: item });
     alert('Your item has been added to your closet!');
-    history.push('/outfits');
+    history.push('/closet');
   };
   if (!item) {
     return 'Stitching your item together';
