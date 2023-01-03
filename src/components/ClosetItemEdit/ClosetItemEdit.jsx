@@ -5,7 +5,6 @@ import { useParams, useHistory } from 'react-router-dom';
 import './ClosetItemEdit.css';
 
 function ClosetItemEdit(props) {
-  console.log(props);
   const [editBtn, setEditBtn] = useState(false);
   const [detail, setDetail] = useState('');
   const dispatch = useDispatch();
@@ -13,17 +12,14 @@ function ClosetItemEdit(props) {
   const { id } = useParams();
 
   function editField() {
-    console.log('in edit field:', props.field);
     setEditBtn(!editBtn);
   }
 
   function handleChange(event) {
-    console.log(detail);
     setDetail(event.target.value);
   }
 
   function updateField() {
-    console.log('Updating Field:', detail, props.field);
     if (detail === '') {
       alert('Oops! Looks like your text field is empty');
     } else {

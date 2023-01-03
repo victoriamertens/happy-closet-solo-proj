@@ -1,11 +1,9 @@
 import { useHistory } from 'react-router-dom';
 
 function ClosetItem({ item }) {
-  console.log('ITEM In Closet:', item.in_closet);
   const history = useHistory();
 
   function navigateDetails() {
-    console.log('in Navigate details, id:', item.id);
     history.push(`/details/` + item.id);
   }
   if (item.in_closet) {

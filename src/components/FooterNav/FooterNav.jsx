@@ -13,19 +13,15 @@ function FooterNav() {
   const user = useSelector((store) => store.user);
 
   function toCloset() {
-    console.log('To closet');
     history.push('/closet');
   }
   function toAddItem() {
-    console.log('To addItem');
     history.push('/additem');
   }
   function toMakeOutfit() {
-    console.log('To Make outfit');
     history.push('/makeoutfit');
   }
   function toOutfits() {
-    console.log('To outfits');
     history.push('/outfits');
   }
 
