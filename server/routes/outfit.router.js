@@ -76,8 +76,16 @@ router.get('/', (req, res) => {
         let item = outfits[i];
         let nextItem = outfits[i + 1];
         console.log('ITEM:', item, nextItem);
-        if (i === 0) {
+        if (item.outfit_id !== nextItem.outfit_id) {
           urlArr.push(item.image_url);
+          let object = {
+            outfitId: item.outfit_id,
+            outfitComment: item.comment,
+            outfitReaction: item.reaction,
+            urls: urlArr,
+          };
+          finalArr.push(object);
+          urlArr = [];
         } else if (i + 1 === outfits.length) {
           urlArr.push(item.image_url);
           let object = {
@@ -89,16 +97,8 @@ router.get('/', (req, res) => {
           finalArr.push(object);
         } else if (item.outfit_id === nextItem.outfit_id) {
           urlArr.push(item.image_url);
-        } else if (item.outfit_id !== nextItem.outfit_id) {
+        } else if (i === 0) {
           urlArr.push(item.image_url);
-          let object = {
-            outfitId: item.outfit_id,
-            outfitComment: item.comment,
-            outfitReaction: item.reaction,
-            urls: urlArr,
-          };
-          finalArr.push(object);
-          urlArr = [];
         }
       }
 
