@@ -11,6 +11,10 @@ function OutfitBuilder() {
     history.push('/makeoutfitcomment');
   };
 
+  const removeItem = (e) => {
+    console.log('EVENT:', e.currentTarget.id);
+  };
+
   if (outfitItems.length === 0) {
     return (
       <div class="outfit-builder">
@@ -26,6 +30,9 @@ function OutfitBuilder() {
           return (
             <div class="img-card">
               <img src={item.image}></img>
+              <button id={item.id} onClick={removeItem} class="x-button">
+                X
+              </button>
             </div>
           );
         })}
