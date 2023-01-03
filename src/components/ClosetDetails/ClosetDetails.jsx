@@ -21,6 +21,7 @@ function ClosetDetails() {
 
   function deleteItem() {
     dispatch({ type: 'DELETE_ITEM', payload: id });
+    alert('Your item has been pulled off its hanger!');
     history.push(`/closet`);
   }
 
