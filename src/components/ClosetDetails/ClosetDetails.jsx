@@ -48,7 +48,7 @@ function ClosetDetails() {
             Edit
           </button>
           <button id="delete" onClick={deleteItem}>
-            DELETE
+            Remove From Closet
           </button>
         </div>
       </div>

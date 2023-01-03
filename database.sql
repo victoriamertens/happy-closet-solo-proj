@@ -21,7 +21,8 @@ CREATE TABLE "items" (
     "cost" INT, 
     "brand" VARCHAR(80),
     "category_name" VARCHAR (50), 
-    "image_url" VARCHAR (500) 
+    "image_url" VARCHAR (500),
+    "in_closet" BOOLEAN DEFAULT TRUE
 );
 
 
