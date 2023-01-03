@@ -68,15 +68,27 @@ router.get('/', (req, res) => {
   pool
     .query(outfitsQueryText, [userId])
     .then((response) => {
-      console.log('RESPONSE:', response.rows);
       let outfits = response.rows;
+      //finalArr is being built by loop. This will be sent to outfits reducer.
       let finalArr = [];
       let urlArr = [];
       for (let i = 0; i < outfits.length; i++) {
+        //these variables are set because they determine what action is taken by the loop to build finalArr
         let item = outfits[i];
         let nextItem = outfits[i + 1];
-        console.log('ITEM:', item, nextItem);
-        if (item.outfit_id !== nextItem.outfit_id) {
+        //This conditional is run first to grab the last point in the array
+        //prevents item.outfit_id from being undefined
+        if (i + 1 === outfits.length) {
+          urlArr.push(item.image_url);
+          let object = {
+            outfitId: item.outfit_id,
+            outfitComment: item.comment,
+            outfitReaction: item.reaction,
+            urls: urlArr,
+          };
+          finalArr.push(object);
+          //Conditional if current outfit id and next outfit id don't match
+        } else if (item.outfit_id !== nextItem.outfit_id) {
           urlArr.push(item.image_url);
           let object = {
             outfitId: item.outfit_id,
@@ -86,15 +98,7 @@ router.get('/', (req, res) => {
           };
           finalArr.push(object);
           urlArr = [];
-        } else if (i + 1 === outfits.length) {
-          urlArr.push(item.image_url);
-          let object = {
-            outfitId: item.outfit_id,
-            outfitComment: item.comment,
-            outfitReaction: item.reaction,
-            urls: urlArr,
-          };
-          finalArr.push(object);
+          //Conditional if the item is the last one in the log
         } else if (item.outfit_id === nextItem.outfit_id) {
           urlArr.push(item.image_url);
         } else if (i === 0) {
