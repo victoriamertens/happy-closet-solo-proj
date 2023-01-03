@@ -1,0 +1,11 @@
+.edit-field {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px 15px;
+  padding: 10px;
+}
+
+.edit-field img {
+  width: 50%;
+}

@@ -1,7 +1,6 @@
 import './OutfitComponent.css';
 
 function OutfitComponent({ items }) {
-  console.log(items);
   return (
     <div class="outfit-card" key={items.outfitId}>
       <div class="images">

@@ -6,7 +6,6 @@ import './OutfitBuilder.css';
 function OutfitBuilder() {
   const outfitItems = useSelector((store) => store.newOutfit);
   const history = useHistory();
-  console.log(outfitItems);
 
   const nextStep = () => {
     history.push('/makeoutfitcomment');

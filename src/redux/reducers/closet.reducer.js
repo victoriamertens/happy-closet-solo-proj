@@ -19,3 +19,15 @@ export const newClothes = (state = {}, action) => {
       return state;
   }
 };
+
+export const itemDetails = (state = {}, action) => {
+  switch (action.type) {
+    case 'SET_ITEM_DETAILS':
+      console.log('In store, itemsDetails:', action.payload);
+      return action.payload;
+    case 'RESET_ITEM_DETAILS':
+      return {};
+    default:
+      return state;
+  }
+};
