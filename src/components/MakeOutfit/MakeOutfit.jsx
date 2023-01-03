@@ -7,8 +7,6 @@ function MakeOutfit() {
   const dispatch = useDispatch();
   const closet = useSelector((store) => store.closet);
 
-  console.log('The store:', closet);
-
   useEffect(() => {
     dispatch({ type: 'GET_CLOSET' });
   }, []);
@@ -16,8 +14,6 @@ function MakeOutfit() {
     return <p>Opening closet doors...</p>;
   }
   if (closet) {
-    console.log('in closet conditional');
-    console.log(closet);
     return (
       <>
         <div className="closet-items">

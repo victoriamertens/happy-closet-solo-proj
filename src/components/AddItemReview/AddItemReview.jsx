@@ -3,14 +3,13 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 function AddItemReview() {
   const item = useSelector((store) => store.newClothes);
-  console.log('Review:', item);
   const dispatch = useDispatch();
   const history = useHistory();
 
   const addToCloset = () => {
     dispatch({ type: 'ADD_TO_CLOSET', payload: item });
     alert('Your item has been added to your closet!');
-    history.push('/outfits');
+    history.push('/closet');
   };
   if (!item) {
     return 'Stitching your item together';
