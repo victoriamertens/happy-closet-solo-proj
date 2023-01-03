@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 import './ClosetItemEdit.css';
 
@@ -10,6 +10,7 @@ function ClosetItemEdit(props) {
   const [detail, setDetail] = useState('');
   const dispatch = useDispatch();
   const history = useHistory();
+  const { id } = useParams();
 
   function editField() {
     console.log('in edit field:', props.field);
@@ -28,7 +29,7 @@ function ClosetItemEdit(props) {
     } else {
       dispatch({
         type: 'UPDATE_FIELD',
-        payload: { field: props.field, data: detail, id: props.id },
+        payload: { field: props.field, data: detail, id: id },
       });
       history.push(`/closet`);
     }

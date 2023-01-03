@@ -40,7 +40,6 @@ WHERE "user_id" = $1 AND "id" = $2;`;
   pool
     .query(queryTextGet, [req.user.id, req.params.id])
     .then((response) => {
-      console.log(response.rows);
       res.send(response.rows);
     })
     .catch((error) => {
