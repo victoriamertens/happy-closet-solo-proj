@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 function AddItemReview() {
   const item = useSelector((store) => store.newClothes);
-  console.log('Review:', item);
   const dispatch = useDispatch();
   const history = useHistory();
 

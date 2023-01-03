@@ -1,0 +1,25 @@
+.item-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+}
+
+.buttons button {
+  width: 40%;
+  padding: 10px 5px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+#edit {
+  background-color: yellow;
+}
+
+#delete {
+  background-color: red;
+}

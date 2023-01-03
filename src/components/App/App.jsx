@@ -22,6 +22,8 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import AddItemPage from '../AddItem/AddItem.jsx';
 import ReviewAddItemPage from '../AddItemReview/AddItemReview.jsx';
 import ClosetPage from '../Closet/Closet.jsx';
+import ClosetDetails from '../ClosetDetails/ClosetDetails.jsx';
+import ClosetDetailsEdit from '../ClosetDetailsEdit/ClosetDetailsEdit.jsx';
 import MakeOutfitPage from '../MakeOutfit/MakeOutfit.jsx';
 import OutfitCommentPage from '../MakeOutfitComment/MakeOutfitComment.jsx';
 import OutfitReviewPage from '../MakeOutfitReview/MakeOutfitReview.jsx';
@@ -76,6 +78,22 @@ function App() {
             path="/closet"
           >
             <ClosetPage />
+          </Route>
+
+          <Route
+            // shows Closet page
+            exact
+            path="/details/:id"
+          >
+            <ClosetDetails />
+          </Route>
+
+          <Route
+            // shows Closet page
+            exact
+            path="/editdetails/:id"
+          >
+            <ClosetDetailsEdit />
           </Route>
 
           <Route
