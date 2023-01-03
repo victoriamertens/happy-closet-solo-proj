@@ -21,6 +21,7 @@ function ClosetDetails() {
 
   function deleteItem() {
     dispatch({ type: 'DELETE_ITEM', payload: id });
+    history.push(`/closet`);
   }
 
   if (!details) {
