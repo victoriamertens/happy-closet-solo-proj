@@ -111,7 +111,7 @@ router.put('/details/:id', (req, res) => {
 //Closet Item DELETE/UPDATE route
 //What determines which process occurs is if the item has been used in an outfit or not
 router.get('/delete/:id', (req, res) => {
-  console.log('In delete router:', req.params.id);
+  console.log('In delete get router:', req.params.id);
   //This query will return a count of how many times a single item is in the outfits log
   let outfitCheckQuery = `SELECT count(*) FROM "items_outfits" 
   JOIN "outfits" ON "items_outfits"."outfit_id" = "outfits"."id"
@@ -126,6 +126,21 @@ router.get('/delete/:id', (req, res) => {
     .catch((error) => {
       console.log(error);
       res.sendStatus(500);
+    });
+});
+
+router.put('/delete/:id', (req, res) => {
+  console.log('In delete put router:', req.params.id);
+  //This query will return a count of how many times a single item is in the outfits log
+  let changeClosetQuery = `UPDATE "items"
+        SET "in_closet" = FALSE
+        WHERE "user_id" = $1 AND "id" = $2;`;
+  pool
+    .query(changeClosetQuery, [req.user.id, req.params.id])
+    .then(sendStatus(200))
+    .catch((err) => {
+      console.log(err);
+      sendStatus(500);
     });
 });
 
