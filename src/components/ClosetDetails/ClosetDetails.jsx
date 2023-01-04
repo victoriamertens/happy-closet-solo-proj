@@ -19,8 +19,8 @@ function ClosetDetails() {
     history.push(`/editdetails/${id}`);
   }
 
-  function deleteItem() {
-    dispatch({ type: 'DELETE_ITEM', payload: id });
+  function removeItem() {
+    dispatch({ type: 'REMOVE_ITEM', payload: id });
     alert('Your item has been pulled off its hanger!');
     history.push(`/closet`);
   }
@@ -40,7 +40,7 @@ function ClosetDetails() {
         <button id="edit" onClick={editItem}>
           Edit
         </button>
-        <button id="delete" onClick={deleteItem}>
+        <button id="delete" onClick={removeItem}>
           Remove From Closet
         </button>
       </div>
