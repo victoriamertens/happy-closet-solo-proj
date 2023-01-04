@@ -108,9 +108,9 @@ router.put('/details/:id', (req, res) => {
     });
 });
 
-//Closet Item DELETE/UPDATE route
-//What determines which process occurs is if the item has been used in an outfit or not
-router.get('/delete/:id', (req, res) => {
+//Closet Item Remove Function
+//The get response is a count of how many times an item is in an outfit
+router.get('/remove/:id', (req, res) => {
   console.log('In delete get router:', req.params.id);
   //This query will return a count of how many times a single item is in the outfits log
   let outfitCheckQuery = `SELECT count(*) FROM "items_outfits" 
@@ -129,7 +129,9 @@ router.get('/delete/:id', (req, res) => {
     });
 });
 
-router.put('/delete/:id', (req, res) => {
+//The put for remove runs if the item is in at least one outfit
+//It will update the item table to change the in_closet column value to false
+router.put('/remove/:id', (req, res) => {
   console.log('In delete put router:', req.params.id);
   //This query will return a count of how many times a single item is in the outfits log
   let changeClosetQuery = `UPDATE "items"
@@ -144,7 +146,8 @@ router.put('/delete/:id', (req, res) => {
     });
 });
 
-router.delete('/delete/:id', (req, res) => {
+//The remove delete will delete the item if the count is zero
+router.delete('/remove/:id', (req, res) => {
   console.log('In delete delete router:', req.params.id);
   let queryTextDelete = `
            DELETE
