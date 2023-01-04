@@ -72,9 +72,13 @@ function* updateField(action) {
 function* deleteItem(action) {
   try {
     console.log('Delteing Item:', action.payload);
-    yield axios.delete(`/closet/delete/${action.payload}`, {
-      payload: action.payload,
-    });
+    const response = yield axios.get(`/closet/delete/${action.payload}`);
+    console.log('Response', response.data);
+    // if (response > 0) {
+    //   yield axios.put(`/closet/delete/${action.payload}`);
+    // } else {
+    //   yield axios.delete(`/closet/delete/${action.payload}`);
+    // }
     yield put({ type: 'GET_CLOSET' });
   } catch (error) {
     console.log(error);

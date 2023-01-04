@@ -110,7 +110,7 @@ router.put('/details/:id', (req, res) => {
 
 //Closet Item DELETE/UPDATE route
 //What determines which process occurs is if the item has been used in an outfit or not
-router.delete('/delete/:id', (req, res) => {
+router.get('/delete/:id', (req, res) => {
   console.log('In delete router:', req.params.id);
   //This query will return a count of how many times a single item is in the outfits log
   let outfitCheckQuery = `SELECT count(*) FROM "items_outfits" 
@@ -121,43 +121,46 @@ router.delete('/delete/:id', (req, res) => {
     .query(outfitCheckQuery, [req.params.id, req.user.id])
     .then((response) => {
       let outfitCount = response.rows[0].count;
-      //IF the count is 0, then a delete will occur
-      if (outfitCount === 0) {
-        let queryTextDelete = `
-         DELETE
-        FROM "items"
-        WHERE "user_id" = $1 AND "id" = $2; `;
-
-        pool
-          .query(queryTextDelete, [req.user.id, req.params.id])
-          .then((response) => {
-            console.log('It came back!', response);
-            res.sendStatus(200);
-          })
-          .catch((error) => {
-            console.log('Catch:', error);
-            res.sendStatus(500);
-          });
-        //IF the count is not zero, then the query will update the data column 'in_closet' to false
-      } else {
-        let changeClosetQuery = `UPDATE "items"  
-        SET "in_closet" = FALSE
-        WHERE "user_id" = $1 AND "id" = $2;`;
-        pool
-          .query(changeClosetQuery, [req.user.id, req.params.id])
-          .then()
-          .catch((err) => {
-            console.log(err);
-            sendStatus(500);
-          });
-      }
+      res.send(outfitCount);
     })
     .catch((error) => {
       console.log(error);
       res.sendStatus(500);
     });
-
-  //
 });
+
+//IF the count is 0, then a delete will occur
+//   if (outfitCount === 0) {
+//     let queryTextDelete = `
+//          DELETE
+//         FROM "items"
+//         WHERE "user_id" = $1 AND "id" = $2; `;
+
+//     pool
+//       .query(queryTextDelete, [req.user.id, req.params.id])
+//       .then((response) => {
+//         console.log('It came back!', response);
+//         res.sendStatus(200);
+//       })
+//       .catch((error) => {
+//         console.log('Catch:', error);
+//         res.sendStatus(500);
+//       });
+//     //IF the count is not zero, then the query will update the data column 'in_closet' to false
+//   } else {
+//     let changeClosetQuery = `UPDATE "items"
+//         SET "in_closet" = FALSE
+//         WHERE "user_id" = $1 AND "id" = $2;`;
+//     pool
+//       .query(changeClosetQuery, [req.user.id, req.params.id])
+//       .then()
+//       .catch((err) => {
+//         console.log(err);
+//         sendStatus(500);
+//       });
+//   }
+// });
+
+//
 
 module.exports = router;
