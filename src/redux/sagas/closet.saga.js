@@ -69,12 +69,22 @@ function* updateField(action) {
   }
 }
 
+function callback(count) {
+  console.log('in the callback:', count);
+}
+
 function* deleteItem(action) {
   try {
     console.log('Delteing Item:', action.payload);
-    yield axios.delete(`/closet/delete/${action.payload}`, {
-      payload: action.payload,
-    });
+    const response = yield axios.get(`/closet/delete/${action.payload}`);
+    console.log('Response', response.data);
+
+    if (response.data > 0) {
+      console.log('in conditional');
+      yield axios.put(`/closet/delete/${action.payload}`);
+    } else {
+      yield axios.delete(`/closet/delete/${action.payload}`);
+    }
     yield put({ type: 'GET_CLOSET' });
   } catch (error) {
     console.log(error);
