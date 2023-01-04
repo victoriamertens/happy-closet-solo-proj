@@ -144,38 +144,23 @@ router.put('/delete/:id', (req, res) => {
     });
 });
 
-//IF the count is 0, then a delete will occur
-//   if (outfitCount === 0) {
-//     let queryTextDelete = `
-//          DELETE
-//         FROM "items"
-//         WHERE "user_id" = $1 AND "id" = $2; `;
+router.delete('/delete/:id', (req, res) => {
+  console.log('In delete delete router:', req.params.id);
+  let queryTextDelete = `
+           DELETE
+          FROM "items"
+          WHERE "user_id" = $1 AND "id" = $2; `;
 
-//     pool
-//       .query(queryTextDelete, [req.user.id, req.params.id])
-//       .then((response) => {
-//         console.log('It came back!', response);
-//         res.sendStatus(200);
-//       })
-//       .catch((error) => {
-//         console.log('Catch:', error);
-//         res.sendStatus(500);
-//       });
-//     //IF the count is not zero, then the query will update the data column 'in_closet' to false
-//   } else {
-//     let changeClosetQuery = `UPDATE "items"
-//         SET "in_closet" = FALSE
-//         WHERE "user_id" = $1 AND "id" = $2;`;
-//     pool
-//       .query(changeClosetQuery, [req.user.id, req.params.id])
-//       .then()
-//       .catch((err) => {
-//         console.log(err);
-//         sendStatus(500);
-//       });
-//   }
-// });
-
-//
+  pool
+    .query(queryTextDelete, [req.user.id, req.params.id])
+    .then((response) => {
+      console.log('It came back!', response);
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log('Catch:', error);
+      res.sendStatus(500);
+    });
+});
 
 module.exports = router;
