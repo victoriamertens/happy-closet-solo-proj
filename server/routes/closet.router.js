@@ -137,7 +137,7 @@ router.put('/delete/:id', (req, res) => {
         WHERE "user_id" = $1 AND "id" = $2;`;
   pool
     .query(changeClosetQuery, [req.user.id, req.params.id])
-    .then(sendStatus(200))
+    .then(res.sendStatus(200))
     .catch((err) => {
       console.log(err);
       sendStatus(500);
