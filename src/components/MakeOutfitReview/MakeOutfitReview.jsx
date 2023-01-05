@@ -41,6 +41,7 @@ function MakeOutfitReview() {
               history.push('/outfits');
             }}
             show={show}
+            component="outfit"
           />
         </div>
       </div>

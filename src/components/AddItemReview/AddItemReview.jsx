@@ -41,6 +41,7 @@ function AddItemReview() {
               history.push('/closet');
             }}
             show={show}
+            component="item"
           />
         </div>
       </>

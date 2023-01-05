@@ -15,7 +15,11 @@ function ModalSuccess2(props) {
         </div>
         <div className="modal-body">
           <img src={logo}></img>
-          <p>Your item is now on a hanger in your closet!</p>
+          {props.component === 'item' ? (
+            <p>Your item is now on a hanger in your closet!</p>
+          ) : (
+            <p>Your outfit is saved!</p>
+          )}
         </div>
         <div className="modal-footer">
           <button onClick={props.onClose}>Close</button>
