@@ -13,8 +13,7 @@ function AddItemReview() {
 
   const addToCloset = () => {
     dispatch({ type: 'ADD_TO_CLOSET', payload: item });
-    alert('Your item has been added to your closet!');
-    history.push('/closet');
+    setShow(true);
   };
   if (!item) {
     return 'Stitching your item together';
@@ -36,8 +35,13 @@ function AddItemReview() {
           <button onClick={addToCloset}> Add to Closet</button>
         </div>
         <div className="success">
-          <button onClick={() => setShow(true)}>Show Modal</button>
-          <ModalSuccess onClose={() => setShow(false)} show={show} />
+          <ModalSuccess
+            onClose={() => {
+              setShow(false);
+              history.push('/closet');
+            }}
+            show={show}
+          />
         </div>
       </>
     );
