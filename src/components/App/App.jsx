@@ -28,6 +28,7 @@ import MakeOutfitPage from '../MakeOutfit/MakeOutfit.jsx';
 import OutfitCommentPage from '../MakeOutfitComment/MakeOutfitComment.jsx';
 import OutfitReviewPage from '../MakeOutfitReview/MakeOutfitReview.jsx';
 import OutfitsPage from '../Outfits/Outfits.jsx';
+import ModalSucces from '../ModalSuccess/ModalSuccess.jsx';
 
 import './App.css';
 
@@ -57,6 +58,15 @@ function App() {
           >
             <AboutPage />
           </Route>
+
+          <Route
+            // shows AboutPage at all times (logged in or not)
+            exact
+            path="/modal"
+          >
+            <ModalSucces />
+          </Route>
+
           <Route
             // shows addItem page
             exact
