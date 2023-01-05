@@ -1,4 +1,5 @@
 import './ModalSuccess.css';
+import logo from '../Images/happy_closet_icon.jpg';
 
 function ModalSuccess() {
   // Get the modal
@@ -36,7 +37,8 @@ function ModalSuccess() {
           <span onClick={closeModal} class="close">
             &times;
           </span>
-          <p>Some text in the Modal..</p>
+          <img src={logo}></img>
+          <p>Your item is now hung up in the closet!</p>
         </div>
       </div>
     </div>
