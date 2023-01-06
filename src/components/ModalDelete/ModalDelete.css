@@ -1,4 +1,4 @@
-.modal {
+.modal-remove {
   position: fixed;
   left: 0;
   top: 0;
@@ -10,21 +10,21 @@
   justify-content: center;
 }
 
-.modal-content {
+.modal-content-remove {
   width: 500px;
   background-color: white;
 }
 
-.modal-header,
-.modal-footer {
+.modal-header-remove,
+.modal-footer-remove {
   padding: 10px;
 }
 
-.modal-title {
+.modal-title-remove {
   margin: 0;
 }
 
-.modal-body {
+.modal-body-remove {
   padding: 10px;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;

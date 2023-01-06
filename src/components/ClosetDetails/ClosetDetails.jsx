@@ -1,6 +1,8 @@
 import { useParams, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
+import ModalDelete from '../ModalDelete/ModalDelete';
 
 import './ClosetDetails.css';
 
@@ -8,6 +10,7 @@ function ClosetDetails() {
   const dispatch = useDispatch();
   const { id } = useParams();
   const details = useSelector((store) => store.itemDetails);
+  const [show, setShow] = useState(false);
 
   const history = useHistory();
 
@@ -40,9 +43,16 @@ function ClosetDetails() {
         <button id="edit" onClick={editItem}>
           Edit
         </button>
-        <button id="delete" onClick={removeItem}>
+        <button id="delete" onClick={() => setShow(true)}>
           Remove From Closet
         </button>
+        <ModalDelete
+          onClose={() => {
+            setShow(false);
+          }}
+          removeItem={() => removeItem()}
+          show={show}
+        />
       </div>
     </div>
   );
