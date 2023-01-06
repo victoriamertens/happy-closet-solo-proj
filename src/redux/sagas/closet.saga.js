@@ -69,12 +69,21 @@ function* updateField(action) {
   }
 }
 
-function* deleteItem(action) {
+function callback(count) {
+  console.log('in the callback:', count);
+}
+
+function* removeItem(action) {
   try {
-    console.log('Delteing Item:', action.payload);
-    yield axios.delete(`/closet/delete/${action.payload}`, {
-      payload: action.payload,
-    });
+    const response = yield axios.get(`/closet/remove/${action.payload}`);
+    console.log('Response', response.data);
+
+    if (response.data > 0) {
+      console.log('in conditional');
+      yield axios.put(`/closet/remove/${action.payload}`);
+    } else {
+      yield axios.delete(`/closet/remove/${action.payload}`);
+    }
     yield put({ type: 'GET_CLOSET' });
   } catch (error) {
     console.log(error);
@@ -88,7 +97,7 @@ function* closetSaga() {
   yield takeEvery('GET_OUTFITS', getOutfits);
   yield takeEvery('GET_DETAILS', getDetails);
   yield takeEvery('UPDATE_FIELD', updateField);
-  yield takeEvery('DELETE_ITEM', deleteItem);
+  yield takeEvery('REMOVE_ITEM', removeItem);
 }
 
 export default closetSaga;
