@@ -57,6 +57,7 @@ function App() {
           >
             <AboutPage />
           </Route>
+
           <Route
             // shows addItem page
             exact

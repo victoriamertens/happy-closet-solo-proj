@@ -1,0 +1,31 @@
+.modal-remove {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content-remove {
+  width: 500px;
+  background-color: white;
+}
+
+.modal-header-remove,
+.modal-footer-remove {
+  padding: 10px;
+}
+
+.modal-title-remove {
+  margin: 0;
+}
+
+.modal-body-remove {
+  padding: 10px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}

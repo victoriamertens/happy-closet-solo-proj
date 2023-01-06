@@ -1,16 +1,20 @@
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { useState } from 'react';
+
+import ModalSuccess from '../ModalSuccess2/ModalSuccess2.jsx';
 
 function MakeOutfitReview() {
   const items = useSelector((store) => store.newOutfit);
   const comments = useSelector((store) => store.outfitComment);
+  const [show, setShow] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
 
   function postOutfit() {
     dispatch({ type: 'POST_OUTFIT', payload: [...items, comments] });
-    history.push('/outfits');
+    setShow(true);
   }
 
   if (!items || !comments) {
@@ -30,15 +34,19 @@ function MakeOutfitReview() {
           <p>Comments: {comments.comment}</p>
         </div>
         <button onClick={postOutfit}> Add to Outfit Log</button>
+        <div className="success">
+          <ModalSuccess
+            onClose={() => {
+              setShow(false);
+              history.push('/outfits');
+            }}
+            show={show}
+            component="outfit"
+          />
+        </div>
       </div>
     );
   }
 }
 
 export default MakeOutfitReview;
-
-const addToCloset = () => {
-  dispatch({ type: 'ADD_TO_CLOSET', payload: item });
-  alert('Your item has been added to your closet!');
-  history.push('/outfits');
-};
