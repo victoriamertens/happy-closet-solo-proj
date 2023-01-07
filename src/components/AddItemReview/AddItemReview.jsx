@@ -7,19 +7,18 @@ import ModalSuccess from '../ModalSuccess2/ModalSuccess2.jsx';
 
 function AddItemReview() {
   const item = useSelector((store) => store.newClothes);
-  const [show, setShow] = useState(false);
+  const show = useSelector((store) => store.showModal);
   const dispatch = useDispatch();
   const history = useHistory();
 
   useEffect(() => {
-    if (!item.name) {
+    if (!item.name && !show) {
       history.push('/additem');
     }
   }, [item]);
 
   const addToCloset = () => {
     dispatch({ type: 'ADD_TO_CLOSET', payload: item });
-    setShow(true);
   };
   if (!item) {
     return 'Stitching your item together';
@@ -43,7 +42,7 @@ function AddItemReview() {
         <div className="success">
           <ModalSuccess
             onClose={() => {
-              setShow(false);
+              dispatch({ type: 'HIDE_MODAL' });
               history.push('/closet');
             }}
             show={show}
