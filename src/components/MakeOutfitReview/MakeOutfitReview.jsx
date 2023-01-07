@@ -1,16 +1,23 @@
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import ModalSuccess from '../ModalSuccess2/ModalSuccess2.jsx';
 
 function MakeOutfitReview() {
   const items = useSelector((store) => store.newOutfit);
   const comments = useSelector((store) => store.outfitComment);
+  const outfit = useSelector((store) => store.newOutfit[0]);
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
+
+  useEffect(() => {
+    if (!outfit) {
+      history.push('/makeoutfit');
+    }
+  }, [outfit]);
 
   function postOutfit() {
     dispatch({ type: 'POST_OUTFIT', payload: [...items, comments] });
