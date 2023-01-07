@@ -2,6 +2,8 @@ export const closet = (state = [], action) => {
   switch (action.type) {
     case 'SET_CLOSET':
       return action.payload.data;
+    case 'CLEAR_CLOSET':
+      return [];
     default:
       return state;
   }
