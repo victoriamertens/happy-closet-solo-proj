@@ -9,19 +9,18 @@ function MakeOutfitReview() {
   const items = useSelector((store) => store.newOutfit);
   const comments = useSelector((store) => store.outfitComment);
   const outfit = useSelector((store) => store.newOutfit[0]);
-  const [show, setShow] = useState(false);
+  const show = useSelector((store) => store.showModal);
   const dispatch = useDispatch();
   const history = useHistory();
 
   useEffect(() => {
-    if (!outfit) {
+    if (!outfit && !show) {
       history.push('/makeoutfit');
     }
   }, [outfit]);
 
   function postOutfit() {
     dispatch({ type: 'POST_OUTFIT', payload: [...items, comments] });
-    setShow(true);
   }
 
   if (!items || !comments) {
@@ -44,7 +43,7 @@ function MakeOutfitReview() {
         <div className="success">
           <ModalSuccess
             onClose={() => {
-              setShow(false);
+              dispatch({ type: 'HIDE_MODAL' });
               history.push('/outfits');
             }}
             show={show}
