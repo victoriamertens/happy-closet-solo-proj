@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import ModalSuccess from '../ModalSuccess2/ModalSuccess2.jsx';
 
@@ -10,6 +10,12 @@ function AddItemReview() {
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
+
+  useEffect(() => {
+    if (!item.name) {
+      history.push('/additem');
+    }
+  }, [item]);
 
   const addToCloset = () => {
     dispatch({ type: 'ADD_TO_CLOSET', payload: item });
