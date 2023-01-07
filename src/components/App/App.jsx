@@ -63,8 +63,17 @@ function App() {
             exact
             path="/addItem"
           >
-            <AddItemPage />
+            {!user.id ? (
+              // If the user is already logged in,
+              // redirect them to the /user page
+              <Redirect to="/user" />
+            ) : (
+              // Otherwise, show the registration page
+
+              <AddItemPage />
+            )}
           </Route>
+
           <Route
             // shows addItem page
             exact
@@ -78,7 +87,15 @@ function App() {
             exact
             path="/closet"
           >
-            <ClosetPage />
+            {!user.id ? (
+              // If the user is already logged in,
+              // redirect them to the /user page
+              <Redirect to="/user" />
+            ) : (
+              // Otherwise, show the registration page
+
+              <ClosetPage />
+            )}
           </Route>
 
           <Route
@@ -86,7 +103,14 @@ function App() {
             exact
             path="/details/:id"
           >
-            <ClosetDetails />
+            {!user.id ? (
+              // If the user is already logged in,
+              // redirect them to the /user page
+              <Redirect to="/user" />
+            ) : (
+              // Otherwise, show the registration page
+              <ClosetDetails />
+            )}
           </Route>
 
           <Route
@@ -102,7 +126,14 @@ function App() {
             exact
             path="/makeoutfit"
           >
-            <MakeOutfitPage />
+            {!user.id ? (
+              // If the user is already logged in,
+              // redirect them to the /user page
+              <Redirect to="/user" />
+            ) : (
+              // Otherwise, show the registration page
+              <MakeOutfitPage />
+            )}
           </Route>
           <Route
             // shows addItem page
@@ -124,7 +155,15 @@ function App() {
             exact
             path="/outfits"
           >
-            <OutfitsPage />
+            {!user.id ? (
+              // If the user is already logged in,
+              // redirect them to the /user page
+              <Redirect to="/user" />
+            ) : (
+              // Otherwise, show the registration page
+
+              <OutfitsPage />
+            )}
           </Route>
 
           {/* For protected routes, the view could show one of several things on the same route.
