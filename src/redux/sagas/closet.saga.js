@@ -16,6 +16,7 @@ function* addClothes(action) {
   try {
     console.log('In sagas addClothes:', action);
     yield axios.post('/closet/newitem', action.payload);
+    yield put({ type: 'SHOW_MODAL' });
     yield put({ type: 'RESET_NEW_ITEM' });
     yield put({ type: 'GET_CLOSET' });
   } catch (error) {
@@ -27,6 +28,7 @@ function* postOutfit(action) {
   try {
     console.log('Post outfit:', action.payload);
     yield axios.post('/outfit/newOutfit', action.payload);
+    yield put({ type: 'SHOW_MODAL' });
     yield put({ type: 'RESET_NEW_OUTFIT' });
     yield put({ type: 'RESET_OUTFIT_COMMENT' });
     yield put({ type: 'GET_CLOSET' });

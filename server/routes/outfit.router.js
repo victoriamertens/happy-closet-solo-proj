@@ -2,8 +2,12 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
+const {
+  rejectUnauthenticated,
+} = require('../modules/authentication-middleware');
+
 // POST route
-router.post('/newoutfit', (req, res) => {
+router.post('/newoutfit', rejectUnauthenticated, (req, res) => {
   console.log('BODY:', req.body, 'USER:', req.user);
 
   //First step, insert into outfits table
@@ -54,7 +58,7 @@ router.post('/newoutfit', (req, res) => {
     });
 });
 
-router.get('/', (req, res) => {
+router.get('/', rejectUnauthenticated, (req, res) => {
   console.log('in router outfit for get:', req.user.id);
   let userId = req.user.id;
   let outfitsQueryText = `SELECT "wear_log"."outfit_id", "comment", "reaction", "item_id", "image_url" 

@@ -1,20 +1,26 @@
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import ModalSuccess from '../ModalSuccess2/ModalSuccess2.jsx';
 
 function MakeOutfitReview() {
   const items = useSelector((store) => store.newOutfit);
   const comments = useSelector((store) => store.outfitComment);
-  const [show, setShow] = useState(false);
+  const outfit = useSelector((store) => store.newOutfit[0]);
+  const show = useSelector((store) => store.showModal);
   const dispatch = useDispatch();
   const history = useHistory();
 
+  useEffect(() => {
+    if (!outfit && !show) {
+      history.push('/makeoutfit');
+    }
+  }, [outfit]);
+
   function postOutfit() {
     dispatch({ type: 'POST_OUTFIT', payload: [...items, comments] });
-    setShow(true);
   }
 
   if (!items || !comments) {
@@ -37,7 +43,7 @@ function MakeOutfitReview() {
         <div className="success">
           <ModalSuccess
             onClose={() => {
-              setShow(false);
+              dispatch({ type: 'HIDE_MODAL' });
               history.push('/outfits');
             }}
             show={show}
