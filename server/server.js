@@ -12,6 +12,7 @@ const userRouter = require('./routes/user.router');
 const closetRouter = require('./routes/closet.router.js');
 const outfitRouter = require('./routes/outfit.router.js');
 const uploadRouter = require('./routes/upload.router.js');
+const s3uploadRouter = require('./routes/s3.router.js');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -29,6 +30,7 @@ app.use('/api/user', userRouter);
 app.use('/closet', closetRouter);
 app.use('/outfit', outfitRouter);
 app.use('/upload', uploadRouter);
+app.use('/s3', s3uploadRouter);
 
 // Serve static files
 app.use(express.static('build'));

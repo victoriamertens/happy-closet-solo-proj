@@ -21,7 +21,7 @@ function Multer() {
       url: '/upload',
       data: data,
     }).then((res) => {
-      alert(res.data.message);
+      console.log('Returned:', res.data);
     });
   }
   return (

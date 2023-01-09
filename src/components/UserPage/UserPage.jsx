@@ -3,6 +3,7 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector } from 'react-redux';
 
 import Multer from '../Multer/Multer.jsx';
+import S3Upload from '../S3Upload/S3Upload.jsx';
 
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
@@ -13,6 +14,7 @@ function UserPage() {
       <p>Your ID is: {user.id}</p>
       <LogOutButton className="btn" />
       <Multer />
+      {/* <S3Upload /> */}
     </div>
   );
 }
