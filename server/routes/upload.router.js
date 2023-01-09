@@ -86,21 +86,4 @@ router.post('/', upload.single('file'), async (req, res) => {
   }
 });
 
-//   if (req.file) {
-//     res.send({ file: req.file });
-//     // res.send({
-//     //   status: true,
-//     //   message: 'File Uploaded!',
-//     // });
-//   } else {
-//     res.status(400).send({
-//       status: false,
-//       data: 'File Not Found :(',
-//     });
-//   }
-// } catch (err) {
-//   res.status(500).send(err);
-// }
-// });
-
 module.exports = router;
