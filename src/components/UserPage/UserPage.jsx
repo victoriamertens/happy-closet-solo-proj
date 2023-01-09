@@ -2,7 +2,7 @@ import React from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector } from 'react-redux';
 
-import Multer from '../Multer/Multer.jsx';
+import Multer from '../UploadImg/UploadImg.jsx';
 import S3Upload from '../S3Upload/S3Upload.jsx';
 
 function UserPage() {

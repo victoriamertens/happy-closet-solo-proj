@@ -14,7 +14,6 @@ export const newClothes = (state = {}, action) => {
     case 'CLOSET_ANSWER':
       console.log('In store, closet answer:', action.payload);
       return action.payload;
-      return { ...state, [action.payload.answer]: action.payload.data };
     case 'RESET_NEW_ITEM':
       return {};
     default:

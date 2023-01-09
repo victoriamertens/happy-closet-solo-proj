@@ -11,7 +11,6 @@ const app = express();
 // Import required AWS SDK clients and commands for Node.js.
 const AWS = require('aws-sdk');
 const S3 = new AWS.S3();
-const { PutObjectCommand } = require('@aws-sdk/client-s3');
 const clientS3 = require('@aws-sdk/client-s3');
 //const { s3Client } = require('./libs/s3Client.js'); // Helper function that creates an Amazon S3 service client module.
 const { path } = require('path');
