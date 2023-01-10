@@ -21,7 +21,7 @@ function ModalDelete(props) {
         </div>
         <div className="modal-body-upload">
           <img src={logo}></img>
-          <UploadImg />
+          <UploadImg onClose={() => props.onClose()} />
         </div>
         <div className="modal-footer-upload"></div>
       </div>

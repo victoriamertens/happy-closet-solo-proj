@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 
-function UploadImg() {
+function UploadImg(props) {
   const [fileData, setFileData] = useState('');
   const dispatch = useDispatch();
 
@@ -15,6 +15,7 @@ function UploadImg() {
     const data = new FormData();
     data.append('file', fileData);
     dispatch({ type: 'UPLOAD_TO_S3', payload: data });
+    props.onClose();
     // axios({
     //   method: 'POST',
     //   url: '/upload',
