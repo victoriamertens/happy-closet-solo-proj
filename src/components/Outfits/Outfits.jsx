@@ -13,6 +13,7 @@ function Outfits() {
 
   return (
     <div>
+      <h3>Your Outfits</h3>
       {store.map((item) => {
         return <OutfitComponent items={item} />;
       })}
