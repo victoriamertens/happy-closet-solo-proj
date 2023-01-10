@@ -14,7 +14,7 @@ function* uploadPhoto(action) {
 }
 
 function* uploadSaga() {
-  yield takeLatest('UPLOAD_PHOTO', uploadPhoto);
+  yield takeLatest('UPLOAD_TO_S3', uploadPhoto);
 }
 
 export default uploadSaga;
