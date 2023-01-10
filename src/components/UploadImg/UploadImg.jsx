@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 
+import './UploadImg.css';
+
 function UploadImg(props) {
   const [fileData, setFileData] = useState('');
   const dispatch = useDispatch();
@@ -16,20 +18,19 @@ function UploadImg(props) {
     data.append('file', fileData);
     dispatch({ type: 'UPLOAD_TO_S3', payload: data });
     props.onClose();
-    // axios({
-    //   method: 'POST',
-    //   url: '/upload',
-    //   data: data,
-    // }).then((res) => {
-    //   console.log('Returned:', res.data);
-    // });
   }
   return (
     <div>
       <form onSubmit={uploadFile}>
         <label>Upload your picture</label>
-        <input type="file" onChange={setFile} required />
-        <input type="submit" name="upload" value="Upload"></input>
+        <div class="upload">
+          <div class="left">
+            <input type="file" onChange={setFile} required />
+          </div>
+          <div class="right">
+            <input type="submit" name="upload" value="Upload"></input>
+          </div>
+        </div>
       </form>
     </div>
   );

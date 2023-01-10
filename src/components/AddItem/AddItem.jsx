@@ -96,9 +96,11 @@ function AddItem() {
       {uploadImg === '' ? (
         <ModalUpload show={show} onClose={() => setShow(false)} />
       ) : (
-        <div>
+        <div class="image">
           <img src={uploadImg}></img>
-          <button onClick={onSubmit}>Review Item</button>
+          <button class="review-item" onClick={onSubmit}>
+            Review Item
+          </button>
         </div>
       )}
     </div>

@@ -1,0 +1,22 @@
+form {
+  margin: 15px;
+}
+
+.upload {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 10px 0px;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  margin-top: 25px;
+}
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
