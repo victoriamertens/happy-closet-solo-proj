@@ -20,7 +20,6 @@ function AddItem() {
   const history = useHistory();
 
   const onSubmit = () => {
-    event.preventDefault();
     if (!name || !cost) {
       alert('Your item needs a name, category, and cost!');
     } else if (name && cost) {
@@ -34,22 +33,21 @@ function AddItem() {
 
   return (
     <div>
-      <form onSubmit={onSubmit}>
-        <label for="name">
-          <h2>What is your item's name?</h2>
-        </label>
-        <input
-          id="name"
-          type="text"
-          onChange={(event) => setName(event.target.value)}
-        ></input>
-        <p>
-          Get Creative! This can be anything from 'Grandma's Vintage Sweater' to
-          'Cassandra'.
-        </p>
-        <h2>Let's get a few more details</h2>
-        <p>*Required Fields</p>
-        {/* <div id="selector">
+      <label for="name">
+        <h2>What is your item's name?</h2>
+      </label>
+      <input
+        id="name"
+        type="text"
+        onChange={(event) => setName(event.target.value)}
+      ></input>
+      <p>
+        Get Creative! This can be anything from 'Grandma's Vintage Sweater' to
+        'Cassandra'.
+      </p>
+      <h2>Let's get a few more details</h2>
+      <p>*Required Fields</p>
+      {/* <div id="selector">
           <label for="category">*Choose a category:</label>
           <select name="category" id="category">
             <option value="">Select a category</option>
@@ -59,48 +57,47 @@ function AddItem() {
             <option value="shoes">Shoes</option>
           </select>
         </div> */}
-        <label for="color">*Color:</label>
-        <input
-          id="color"
-          type="text"
-          onChange={(event) => setColor(event.target.value)}
-        ></input>
+      <label for="color">*Color:</label>
+      <input
+        id="color"
+        type="text"
+        onChange={(event) => setColor(event.target.value)}
+      ></input>
 
-        <label for="cost">*Initial Cost of Item:</label>
-        <input
-          placeholder="Enter a number"
-          id="cost"
-          type="number"
-          onChange={(event) => setCost(event.target.value)}
-        ></input>
-        <label for="brand">Brand/Maker:</label>
-        <input
-          id="brand"
-          type="text"
-          onChange={(event) => setBrand(event.target.value)}
-        ></input>
-        <h2>Do you have an image to upload?</h2>
-        <label for="image">Image URL:</label>
-        <input
-          id="image"
-          type="text"
-          onChange={(event) => setImageUrl(event.target.value)}
-        ></input>
+      <label for="cost">*Initial Cost of Item:</label>
+      <input
+        placeholder="Enter a number"
+        id="cost"
+        type="number"
+        onChange={(event) => setCost(event.target.value)}
+      ></input>
+      <label for="brand">Brand/Maker:</label>
+      <input
+        id="brand"
+        type="text"
+        onChange={(event) => setBrand(event.target.value)}
+      ></input>
+      <h2>Upload an Item Image!</h2>
+      {uploadImg !== '' ? (
+        <></>
+      ) : (
+        <button
+          onClick={() => {
+            setShow(true);
+            console.log(show);
+          }}
+        >
+          Add Photo
+        </button>
+      )}
 
-        <button type="submit">Review Item</button>
-      </form>
-      <button
-        onClick={() => {
-          setShow(true);
-          console.log(show);
-        }}
-      >
-        Show Modal
-      </button>
       {uploadImg === '' ? (
         <ModalUpload show={show} onClose={() => setShow(false)} />
       ) : (
-        <img src={uploadImg}></img>
+        <div>
+          <img src={uploadImg}></img>
+          <button onClick={onSubmit}>Review Item</button>
+        </div>
       )}
     </div>
   );

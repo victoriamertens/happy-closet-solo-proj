@@ -8,6 +8,7 @@ import ModalSuccess from '../ModalSuccess2/ModalSuccess2.jsx';
 function AddItemReview() {
   const item = useSelector((store) => store.newClothes);
   const show = useSelector((store) => store.showModal);
+  const imageUrl = useSelector((store) => store.uploadImg);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -34,7 +35,7 @@ function AddItemReview() {
             <p>Brand: {item.brand}</p>
           </div>
           <div id="item-image">
-            <img src={item.imageUrl}></img>
+            <img src={imageUrl}></img>
           </div>
 
           <button onClick={addToCloset}> Add to Closet</button>
