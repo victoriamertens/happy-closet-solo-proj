@@ -14,7 +14,6 @@ export const newClothes = (state = {}, action) => {
     case 'CLOSET_ANSWER':
       console.log('In store, closet answer:', action.payload);
       return action.payload;
-      return { ...state, [action.payload.answer]: action.payload.data };
     case 'RESET_NEW_ITEM':
       return {};
     default:
@@ -29,6 +28,18 @@ export const itemDetails = (state = {}, action) => {
       return action.payload;
     case 'RESET_ITEM_DETAILS':
       return {};
+    default:
+      return state;
+  }
+};
+
+export const uploadImg = (state = '', action) => {
+  switch (action.type) {
+    case 'UPLOAD_IMAGE':
+      console.log('In store, itemsDetails:', action.payload);
+      return action.payload;
+    case 'RESET_UPLOAD_IMAGE':
+      return '';
     default:
       return state;
   }

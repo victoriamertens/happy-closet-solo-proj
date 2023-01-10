@@ -11,6 +11,7 @@ const passport = require('./strategies/user.strategy');
 const userRouter = require('./routes/user.router');
 const closetRouter = require('./routes/closet.router.js');
 const outfitRouter = require('./routes/outfit.router.js');
+const uploadRouter = require('./routes/upload.router.js');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -27,6 +28,7 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/closet', closetRouter);
 app.use('/outfit', outfitRouter);
+app.use('/upload', uploadRouter);
 
 // Serve static files
 app.use(express.static('build'));

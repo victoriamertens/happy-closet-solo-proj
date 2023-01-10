@@ -1,0 +1,57 @@
+.modal-upload {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content-upload {
+  width: 500px;
+  background-color: white;
+}
+
+.modal-header-upload,
+.modal-footer-upload {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px 0px 0px;
+}
+
+.modal-title-upload {
+  margin: 0;
+}
+
+.modal-body-upload {
+  padding: 20px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.modal-img {
+  width: 25%;
+}
+
+.left-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.right-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.close {
+  padding: 0px 10px;
+  border-radius: 5px;
+  border: none;
+}
