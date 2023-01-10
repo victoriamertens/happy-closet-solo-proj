@@ -1,11 +1,14 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const {
+  rejectUnauthenticated,
+} = require('../modules/authentication-middleware');
 
 /**
  * GET route template
  */
-router.get('/', (req, res) => {
+router.get('/', rejectUnauthenticated, (req, res) => {
   // GET route code here
   console.log('In closet GET router:', req.user);
   let queryTextGet = `
@@ -29,7 +32,7 @@ ORDER BY "id" DESC; `;
 /**
  * GET Closet Item Details
  */
-router.get('/details/:id', (req, res) => {
+router.get('/details/:id', rejectUnauthenticated, (req, res) => {
   // GET route code here
   console.log('In closet GET router:', req.params.id);
   let queryTextGet = `
@@ -51,7 +54,7 @@ WHERE "user_id" = $1 AND "id" = $2;`;
 /**
  * POST route template
  */
-router.post('/newitem', (req, res) => {
+router.post('/newitem', rejectUnauthenticated, (req, res) => {
   // POST route code here
   console.log('BODY:', req.body, 'USER:', req.user);
   let data = req.body;
@@ -87,7 +90,7 @@ router.post('/newitem', (req, res) => {
 });
 
 //PUT route for closet item details
-router.put('/details/:id', (req, res) => {
+router.put('/details/:id', rejectUnauthenticated, (req, res) => {
   console.log('In closet/details PUT router:', req.params.id);
   let newInput = req.body.payload.data;
   let columnName = req.body.payload.field;
@@ -110,7 +113,7 @@ router.put('/details/:id', (req, res) => {
 
 //Closet Item Remove Function
 //The get response is a count of how many times an item is in an outfit
-router.get('/remove/:id', (req, res) => {
+router.get('/remove/:id', rejectUnauthenticated, (req, res) => {
   console.log('In delete get router:', req.params.id);
   //This query will return a count of how many times a single item is in the outfits log
   let outfitCheckQuery = `SELECT count(*) FROM "items_outfits" 
@@ -131,7 +134,7 @@ router.get('/remove/:id', (req, res) => {
 
 //The put for remove runs if the item is in at least one outfit
 //It will update the item table to change the in_closet column value to false
-router.put('/remove/:id', (req, res) => {
+router.put('/remove/:id', rejectUnauthenticated, (req, res) => {
   console.log('In delete put router:', req.params.id);
   //This query will return a count of how many times a single item is in the outfits log
   let changeClosetQuery = `UPDATE "items"
@@ -147,7 +150,7 @@ router.put('/remove/:id', (req, res) => {
 });
 
 //The remove delete will delete the item if the count is zero
-router.delete('/remove/:id', (req, res) => {
+router.delete('/remove/:id', rejectUnauthenticated, (req, res) => {
   console.log('In delete delete router:', req.params.id);
   let queryTextDelete = `
            DELETE

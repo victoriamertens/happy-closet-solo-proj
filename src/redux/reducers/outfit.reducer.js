@@ -34,6 +34,8 @@ export const outfits = (state = [], action) => {
     case 'SET_OUTFITS':
       console.log('In store, set outfits:', action.payload);
       return action.payload;
+    case 'CLEAR_OUTFITS':
+      return [];
     default:
       return state;
   }
