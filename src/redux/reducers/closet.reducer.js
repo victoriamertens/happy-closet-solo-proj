@@ -32,3 +32,15 @@ export const itemDetails = (state = {}, action) => {
       return state;
   }
 };
+
+export const uploadImg = (state = '', action) => {
+  switch (action.type) {
+    case 'UPLOAD_IMAGE':
+      console.log('In store, itemsDetails:', action.payload);
+      return action.payload;
+    case 'RESET_UPLOAD_IMAGE':
+      return '';
+    default:
+      return state;
+  }
+};

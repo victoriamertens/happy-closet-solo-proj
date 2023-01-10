@@ -6,7 +6,7 @@ function* uploadPhoto(action) {
     console.log('Data for upload:', action.payload);
     let response = yield axios.post('/upload', action.payload);
 
-    yield put({ type: 'UPLOAD_IMAGE', payload: response });
+    yield put({ type: 'UPLOAD_IMAGE', payload: response.data });
   } catch (error) {
     console.log('Error with photo upload:', error);
     //
