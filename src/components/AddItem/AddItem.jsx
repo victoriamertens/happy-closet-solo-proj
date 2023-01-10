@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import UploadImg from '../UploadImg/UploadImg.jsx';
@@ -10,6 +10,8 @@ function AddItem() {
   const [brand, setBrand] = useState('');
   const [cost, setCost] = useState('');
   const [imageUrl, setImageUrl] = useState('');
+
+  const uploadImg = useSelector((store) => store.uploadImg);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -84,7 +86,7 @@ function AddItem() {
 
         <button type="submit">Review Item</button>
       </form>
-      <UploadImg />
+      {uploadImg === '' ? <UploadImg /> : <img src={uploadImg}></img>}
     </div>
   );
 }
