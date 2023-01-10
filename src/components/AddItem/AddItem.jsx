@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import UploadImg from '../UploadImg/UploadImg.jsx';
+//import UploadImg from '../UploadImg/UploadImg.jsx';
 import ModalUpload from '../ModalUpload/ModalUpload.jsx';
+import './AddItem.css';
 
 function AddItem() {
   const [name, setName] = useState('');
@@ -32,8 +33,8 @@ function AddItem() {
   };
 
   return (
-    <div>
-      <label for="name">
+    <div class="add-item">
+      <label htmlFor="name">
         <h2>What is your item's name?</h2>
       </label>
       <input
@@ -45,39 +46,40 @@ function AddItem() {
         Get Creative! This can be anything from 'Grandma's Vintage Sweater' to
         'Cassandra'.
       </p>
-      <h2>Let's get a few more details</h2>
-      <p>*Required Fields</p>
-      {/* <div id="selector">
-          <label for="category">*Choose a category:</label>
-          <select name="category" id="category">
-            <option value="">Select a category</option>
-            <option value="tops">Tops</option>
-            <option value="bottoms">Bottoms</option>
-            <option value="dress-jumpsuit">Dress/Jumpsuit</option>
-            <option value="shoes">Shoes</option>
-          </select>
-        </div> */}
-      <label for="color">*Color:</label>
+      <h2>Let's get a few more details:</h2>
+
+      <div id="selector">
+        <label for="category">Choose a category:</label>
+        <select name="category" id="category">
+          <option value="">Select a category</option>
+          <option value="tops">Tops</option>
+          <option value="bottoms">Bottoms</option>
+          <option value="dress-jumpsuit">Dress/Jumpsuit</option>
+          <option value="shoes">Shoes</option>
+        </select>
+      </div>
+      <label htmlFor="color">Color:</label>
       <input
+        class="tesing"
         id="color"
         type="text"
         onChange={(event) => setColor(event.target.value)}
       ></input>
 
-      <label for="cost">*Initial Cost of Item:</label>
+      <label htmlFor="cost">Initial Cost of Item:</label>
       <input
         placeholder="Enter a number"
         id="cost"
         type="number"
         onChange={(event) => setCost(event.target.value)}
       ></input>
-      <label for="brand">Brand/Maker:</label>
+      <label htmlFor="brand">Brand/Maker:</label>
       <input
         id="brand"
         type="text"
         onChange={(event) => setBrand(event.target.value)}
       ></input>
-      <h2>Upload an Item Image!</h2>
+      <h2>Upload an Item Image:</h2>
       {uploadImg !== '' ? (
         <></>
       ) : (
