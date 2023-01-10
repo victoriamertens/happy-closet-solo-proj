@@ -1,4 +1,4 @@
-import './ModalDelete.css';
+import './ModalUpload.css';
 import logo from '../Images/happy_closet_icon.jpg';
 
 import UploadImg from '../UploadImg/UploadImg.jsx';
@@ -17,12 +17,11 @@ function ModalDelete(props) {
       >
         <div className="modal-header-upload">
           <h4>Upload Item</h4>
+          <button onClick={props.onClose}>X</button>
         </div>
         <div className="modal-body-upload">
           <img src={logo}></img>
           <UploadImg />
-          <button onClick={props.removeItem}>Upload Image</button>
-          <button onClick={props.onClose}> Cancel</button>
         </div>
         <div className="modal-footer-upload"></div>
       </div>

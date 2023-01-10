@@ -3,15 +3,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import UploadImg from '../UploadImg/UploadImg.jsx';
+import ModalUpload from '../ModalUpload/ModalUpload.jsx';
 
 function AddItem() {
   const [name, setName] = useState('');
   const [color, setColor] = useState('');
   const [brand, setBrand] = useState('');
   const [cost, setCost] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
+  //const [imageUrl, setImageUrl] = useState('');
+  const [show, setShow] = useState(false);
 
   const uploadImg = useSelector((store) => store.uploadImg);
+  //const show = useSelector((store) => store.showModal);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -23,7 +26,7 @@ function AddItem() {
     } else if (name && cost) {
       dispatch({
         type: 'CLOSET_ANSWER',
-        payload: { name, color, brand, cost, imageUrl },
+        payload: { name, color, brand, cost, uploadImg },
       });
       history.push('/addItemReview');
     }
@@ -86,7 +89,19 @@ function AddItem() {
 
         <button type="submit">Review Item</button>
       </form>
-      {uploadImg === '' ? <UploadImg /> : <img src={uploadImg}></img>}
+      <button
+        onClick={() => {
+          setShow(true);
+          console.log(show);
+        }}
+      >
+        Show Modal
+      </button>
+      {uploadImg === '' ? (
+        <ModalUpload show={show} onClose={() => setShow(false)} />
+      ) : (
+        <img src={uploadImg}></img>
+      )}
     </div>
   );
 }
