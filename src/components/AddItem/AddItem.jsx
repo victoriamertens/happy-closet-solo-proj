@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
+import UploadImg from '../UploadImg/UploadImg.jsx';
+
 function AddItem() {
   const [name, setName] = useState('');
   const [color, setColor] = useState('');
@@ -23,11 +25,6 @@ function AddItem() {
       });
       history.push('/addItemReview');
     }
-    //Original Solution, might use again if form becomes componentized.
-    // dispatch({
-    //   type: 'CLOSET_ANSWER',
-    //   payload: { data: name, answer: 'name' },
-    // });
   };
 
   return (
@@ -84,12 +81,10 @@ function AddItem() {
           type="text"
           onChange={(event) => setImageUrl(event.target.value)}
         ></input>
-        <p>
-          If you don't have an image, no worries! We will render an icon in its
-          place in your closet.
-        </p>
+
         <button type="submit">Review Item</button>
       </form>
+      <UploadImg />
     </div>
   );
 }

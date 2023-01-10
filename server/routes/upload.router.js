@@ -1,22 +1,23 @@
 const express = require('express');
-const pool = require('../modules/pool');
+//const pool = require('../modules/pool');
 const router = express.Router();
 
 const multer = require('multer');
 const fs = require('fs');
 //const cors = require('cors');
-const app = express();
+//const app = express();
 //app.use(cors());
 
 // Import required AWS SDK clients and commands for Node.js.
 const AWS = require('aws-sdk');
 const S3 = new AWS.S3();
-const clientS3 = require('@aws-sdk/client-s3');
+//const clientS3 = require('@aws-sdk/client-s3');
 //const { s3Client } = require('./libs/s3Client.js'); // Helper function that creates an Amazon S3 service client module.
-const { path } = require('path');
+//const { path } = require('path');
 //const { fs } = require('fs');
 require('dotenv').config();
 
+let fileNameTest = '';
 //MULTER BELOW
 let storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -43,11 +44,6 @@ AWS.config.getCredentials(function (err) {
   }
 });
 
-// const region = 'us-east-2';
-// const regionCred = new clientS3({ region: region });
-
-// console.log('Region: ', AWS.config.region);
-
 router.post('/', upload.single('file'), async (req, res) => {
   // POST route code here
   try {
@@ -71,11 +67,13 @@ router.post('/', upload.single('file'), async (req, res) => {
       };
 
       S3.putObject(uploadParams, function (err, data) {
-        if (err) console.log(err, err.stack); // an error occurred
+        if (err) console.log(err, err.stack);
+        // an error occurred, add fs.unlink for file?
         else {
           console.log('Success, Here is the data', data);
           let imageUrl = `https://myclosetbucket234q4623434532.s3.us-east-2.amazonaws.com/closetimages/${file.filename}`;
           console.log('Image URL:', imageUrl);
+          //here is where you can put fs.unlink
           res.send(imageUrl);
         }
       });
