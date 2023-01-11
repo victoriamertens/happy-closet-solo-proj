@@ -1,0 +1,31 @@
+#outfit-header {
+}
+
+.filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 0px 10px 15px 0px;
+}
+
+.filter button {
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+#smile {
+  background-color: rgb(20, 234, 20);
+}
+
+#okay {
+  background-color: rgb(247, 226, 39);
+}
+#frown {
+  background-color: red;
+}
+
+#outfit-header h1 {
+  margin-left: 10px;
+}
