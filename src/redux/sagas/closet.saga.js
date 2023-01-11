@@ -49,6 +49,17 @@ function* getOutfits() {
   }
 }
 
+function* fetchReaction(action) {
+  try {
+    console.log('In getreaction');
+    const response = yield axios.get('/outfit/reaction/' + action.payload);
+    console.log('The reaction closet:', response);
+    yield put({ type: 'SET_CLOSET', payload: response });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 function* getDetails(action) {
   try {
     console.log('Getting details:', action.payload);
@@ -95,6 +106,7 @@ function* removeItem(action) {
 
 function* closetSaga() {
   yield takeEvery('GET_CLOSET', fetchCloset);
+  yield takeEvery('GET_REACTION', fetchReaction);
   yield takeEvery('ADD_TO_CLOSET', addClothes);
   yield takeEvery('POST_OUTFIT', postOutfit);
   yield takeEvery('GET_OUTFITS', getOutfits);
