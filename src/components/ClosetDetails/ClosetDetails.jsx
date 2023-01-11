@@ -34,11 +34,13 @@ function ClosetDetails() {
 
   return (
     <div class="item-details">
-      <p class="name">{details.name}</p>
-      <img src={details.image_url}></img>
-      <p>Cost: {details.cost}</p>
-      <p>Color: {details.color}</p>
-      <p>Category: {details.category}</p>
+      <div class="container">
+        <h2 class="name">{details.name}</h2>
+        <img id="details-img" src={details.image_url}></img>
+        <p>Cost: {details.cost}</p>
+        <p>Color: {details.color}</p>
+        <p>Category: {details.category}</p>
+      </div>
       <div class="buttons">
         <button id="edit" onClick={editItem}>
           Edit

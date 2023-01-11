@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 //import UploadImg from '../UploadImg/UploadImg.jsx';
 import ModalUpload from '../ModalUpload/ModalUpload.jsx';
+import ModalSuccess from '../ModalSuccess2/ModalSuccess2.jsx';
 import './AddItem.css';
 
 function AddItem() {
@@ -11,8 +12,10 @@ function AddItem() {
   const [color, setColor] = useState('');
   const [brand, setBrand] = useState('');
   const [cost, setCost] = useState('');
+  const [category, setCategory] = useState('');
+  const show = useSelector((store) => store.showModal);
   //const [imageUrl, setImageUrl] = useState('');
-  const [show, setShow] = useState(false);
+  const [showUpload, setShowUpload] = useState(false);
 
   const uploadImg = useSelector((store) => store.uploadImg);
   //const show = useSelector((store) => store.showModal);
@@ -21,14 +24,13 @@ function AddItem() {
   const history = useHistory();
 
   const onSubmit = () => {
-    if (!name || !cost) {
+    if (!name || !cost || !category) {
       alert('Your item needs a name, category, and cost!');
-    } else if (name && cost) {
+    } else if (name && cost && category) {
       dispatch({
-        type: 'CLOSET_ANSWER',
-        payload: { name, color, brand, cost, uploadImg },
+        type: 'ADD_TO_CLOSET',
+        payload: { name, color, brand, cost, category, uploadImg },
       });
-      history.push('/addItemReview');
     }
   };
 
@@ -50,7 +52,11 @@ function AddItem() {
 
       <div id="selector">
         <label for="category">Choose a category:</label>
-        <select name="category" id="category">
+        <select
+          onChange={(event) => setCategory(event.target.value)}
+          name="category"
+          id="category"
+        >
           <option value="">Select a category</option>
           <option value="tops">Tops</option>
           <option value="bottoms">Bottoms</option>
@@ -85,7 +91,7 @@ function AddItem() {
       ) : (
         <button
           onClick={() => {
-            setShow(true);
+            setShowUpload(true);
             console.log(show);
           }}
         >
@@ -94,15 +100,25 @@ function AddItem() {
       )}
 
       {uploadImg === '' ? (
-        <ModalUpload show={show} onClose={() => setShow(false)} />
+        <ModalUpload show={showUpload} onClose={() => setShowUpload(false)} />
       ) : (
         <div class="image">
           <img src={uploadImg}></img>
           <button class="review-item" onClick={onSubmit}>
-            Review Item
+            Add to Closet
           </button>
         </div>
       )}
+      <div className="success">
+        <ModalSuccess
+          onClose={() => {
+            dispatch({ type: 'HIDE_MODAL' });
+            history.push('/closet');
+          }}
+          show={show}
+          component="item"
+        />
+      </div>
     </div>
   );
 }

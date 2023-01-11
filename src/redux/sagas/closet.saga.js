@@ -18,6 +18,7 @@ function* addClothes(action) {
     yield axios.post('/closet/newitem', action.payload);
     yield put({ type: 'SHOW_MODAL' });
     yield put({ type: 'RESET_NEW_ITEM' });
+    yield put({ type: 'RESET_UPLOAD_IMAGE' });
     yield put({ type: 'GET_CLOSET' });
   } catch (error) {
     console.log(error);
