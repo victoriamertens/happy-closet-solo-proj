@@ -56,7 +56,7 @@ WHERE "user_id" = $1 AND "id" = $2;`;
  */
 router.post('/newitem', rejectUnauthenticated, (req, res) => {
   // POST route code here
-  console.log('UploadImg:', req.body.uploadImg, 'USER:', req.user);
+  console.log('UploadImg:', req.body, 'USER:', req.user);
   let data = req.body;
   let userId = req.user.id;
   let color = '';
