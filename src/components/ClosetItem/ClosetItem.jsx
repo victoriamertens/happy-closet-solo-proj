@@ -1,5 +1,7 @@
 import { useHistory } from 'react-router-dom';
 
+import './ClosetItem.css';
+
 function ClosetItem({ item }) {
   const history = useHistory();
 
