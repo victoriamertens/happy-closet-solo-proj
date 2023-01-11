@@ -11,9 +11,32 @@ function Outfits() {
     dispatch({ type: 'GET_OUTFITS' });
   }, []);
 
+  function filterBySmile() {
+    console.log('smile');
+    dispatch({ type: 'GET_REACTION', payload: 'smiles' });
+  }
+  function filterByOkay() {
+    console.log('okay');
+    dispatch({ type: 'GET_REACTION', payload: 'okays' });
+  }
+  function filterByFrown() {
+    console.log('frown');
+    dispatch({ type: 'GET_REACTION', payload: 'frowns' });
+  }
+
+  function filterByNone() {
+    console.log('none');
+    dispatch({ type: 'GET_OUTFITS' });
+  }
+
   return (
     <div>
       <h3>Your Outfits</h3>
+      <p>Fitler By:</p>
+      <button onClick={filterBySmile}>Smile</button>
+      <button onClick={filterByOkay}>Okay</button>
+      <button onClick={filterByFrown}>Frown</button>
+      <button onClick={filterByNone}>No Filter</button>
       {store.map((item) => {
         return <OutfitComponent items={item} />;
       })}
