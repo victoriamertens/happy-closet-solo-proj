@@ -66,7 +66,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   JOIN "outfits" ON "outfits"."id" = "wear_log"."outfit_id"
   JOIN "items_outfits" ON "items_outfits"."outfit_id" = "outfits"."id"
   JOIN "items" ON "items"."id" = "items_outfits"."item_id"
-  WHERE "wear_log"."user_id" = $1;
+  WHERE "wear_log"."user_id" = $1
+  ORDER BY "outfit_id" DESC;
   `;
 
   pool
