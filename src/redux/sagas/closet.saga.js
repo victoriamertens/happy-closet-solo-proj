@@ -54,7 +54,7 @@ function* fetchReaction(action) {
     console.log('In getreaction');
     const response = yield axios.get('/outfit/reaction/' + action.payload);
     console.log('The reaction closet:', response);
-    yield put({ type: 'SET_CLOSET', payload: response });
+    yield put({ type: 'SET_OUTFITS', payload: response.data });
   } catch (error) {
     console.log(error);
   }

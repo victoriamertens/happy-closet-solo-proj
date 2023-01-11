@@ -124,7 +124,8 @@ router.get('/reaction/:reaction', rejectUnauthenticated, (req, res) => {
   console.log('in router outfit for get reaction:', req.params.reaction);
   let userId = req.user.id;
   let incomingReaction = req.params.reaction;
-  let outfitsQueryText = `SELECT "wear_log"."outfit_id", "comment", "reaction", "item_id", "image_url" 
+  let finalReaction = 0;
+  let outfitsReactionQuery = `SELECT "wear_log"."outfit_id", "comment", "reaction", "item_id", "image_url" 
   FROM "wear_log" 
   JOIN "outfits" ON "outfits"."id" = "wear_log"."outfit_id"
   JOIN "items_outfits" ON "items_outfits"."outfit_id" = "outfits"."id"
@@ -133,55 +134,56 @@ router.get('/reaction/:reaction', rejectUnauthenticated, (req, res) => {
   ORDER BY "outfit_id" DESC;
   `;
   if (incomingReaction === 'smiles') {
-    incomingReaction = 1;
+    finalReaction = 1;
   } else if (incomingReaction === 'okays') {
-    incomingReaction = 2;
+    finalReaction = 2;
   } else if (incomingReaction === 'frowns') {
-    incomingReaction = 3;
+    finalReaction = 3;
   }
-
+  console.log(userId, finalReaction);
   pool
-    .query(outfitsQueryText, [userId, incomingReaction])
+    .query(outfitsReactionQuery, [userId, finalReaction])
     .then((response) => {
       let outfits = response.rows;
+
       //finalArr is being built by loop. This will be sent to outfits reducer.
-      let finalArr = [];
-      let urlArr = [];
+      let finalReactionArr = [];
+      let urlReactionArr = [];
       for (let i = 0; i < outfits.length; i++) {
-        //these variables are set because they determine what action is taken by the loop to build finalArr
+        //these variables are set because they determine what action is taken by the loop to build finalReactionArr
         let item = outfits[i];
         let nextItem = outfits[i + 1];
         //This conditional is run first to grab the last point in the array
         //prevents item.outfit_id from being undefined
         if (i + 1 === outfits.length) {
-          urlArr.push(item.image_url);
+          urlReactionArr.push(item.image_url);
           let object = {
             outfitId: item.outfit_id,
             outfitComment: item.comment,
             outfitReaction: item.reaction,
-            urls: urlArr,
+            urls: urlReactionArr,
           };
-          finalArr.push(object);
+          finalReactionArr.push(object);
           //Conditional if current outfit id and next outfit id don't match
         } else if (item.outfit_id !== nextItem.outfit_id) {
-          urlArr.push(item.image_url);
+          urlReactionArr.push(item.image_url);
           let object = {
             outfitId: item.outfit_id,
             outfitComment: item.comment,
             outfitReaction: item.reaction,
-            urls: urlArr,
+            urls: urlReactionArr,
           };
-          finalArr.push(object);
-          urlArr = [];
+          finalReactionArr.push(object);
+          urlReactionArr = [];
           //Conditional if the item is the last one in the log
         } else if (item.outfit_id === nextItem.outfit_id) {
-          urlArr.push(item.image_url);
+          urlReactionArr.push(item.image_url);
         } else if (i === 0) {
-          urlArr.push(item.image_url);
+          urlReactionArr.push(item.image_url);
         }
       }
-
-      res.send(finalArr);
+      console.log(finalReactionArr);
+      res.send(finalReactionArr);
     })
     .catch((error) => {
       console.log(error);
