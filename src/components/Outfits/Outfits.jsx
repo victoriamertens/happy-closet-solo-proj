@@ -2,6 +2,11 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import OutfitComponent from '../OutfitComponent/OutfitComponent.jsx';
+import './Outfits.css';
+
+import Smile from '@mui/icons-material/SentimentVerySatisfiedOutlined';
+import Okay from '@mui/icons-material/SentimentSatisfied';
+import Frown from '@mui/icons-material/SentimentVeryDissatisfied';
 
 function Outfits() {
   const dispatch = useDispatch();
@@ -31,12 +36,24 @@ function Outfits() {
 
   return (
     <div>
-      <h3>Your Outfits</h3>
-      <p>Fitler By:</p>
-      <button onClick={filterBySmile}>Smile</button>
-      <button onClick={filterByOkay}>Okay</button>
-      <button onClick={filterByFrown}>Frown</button>
-      <button onClick={filterByNone}>No Filter</button>
+      <div id="outfit-header">
+        <h1>Your Outfits</h1>
+        <div class="filter">
+          <p>Fitler By:</p>
+          <button id="smile" onClick={filterBySmile}>
+            <Smile />
+          </button>
+          <button id="okay" onClick={filterByOkay}>
+            <Okay />
+          </button>
+          <button id="frown" onClick={filterByFrown}>
+            <Frown />
+          </button>
+          <button id="none" onClick={filterByNone}>
+            No Filter
+          </button>
+        </div>
+      </div>
       {store.map((item) => {
         return <OutfitComponent items={item} />;
       })}

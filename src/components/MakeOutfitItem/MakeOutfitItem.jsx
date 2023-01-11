@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 
+import './MakeOutfitItem.css';
+
 function MakeOutfitItem({ item }) {
   const dispatch = useDispatch();
   const [inOutfit, setInOutfit] = useState(false);
@@ -37,9 +39,9 @@ function MakeOutfitItem({ item }) {
   }
   if (item.in_closet) {
     return (
-      <div onClick={addOutfitToStore} key={item.id}>
+      <div class="item" onClick={addOutfitToStore} key={item.id}>
         <p>Name: {item.name}</p>
-        <img src={item.image_url}></img>
+        <img class="make-outfit" src={item.image_url}></img>
         {console.log('outfit:', inOutfit)}
       </div>
     );

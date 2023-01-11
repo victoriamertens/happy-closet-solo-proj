@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import MakeOutfitItem from '../MakeOutfitItem/MakeOutfitItem.jsx';
 import OutfitBuilder from '../OutfitBuilder/OutfitBuilder.jsx';
 
+import './MakeOutfit.css';
+
 function MakeOutfit() {
   const dispatch = useDispatch();
   const closet = useSelector((store) => store.closet);
@@ -16,7 +18,7 @@ function MakeOutfit() {
   if (closet) {
     return (
       <>
-        <div className="closet-items">
+        <div className="outfit-items">
           {closet.map((item) => {
             return <MakeOutfitItem key={item.id} item={item} />;
           })}
