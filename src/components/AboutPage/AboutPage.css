@@ -1,0 +1,9 @@
+#technologies img {
+  width: 60px;
+}
+
+#technologies {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
