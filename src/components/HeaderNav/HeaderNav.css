@@ -40,3 +40,8 @@
 .navLink:hover {
   background-color: #008183;
 }
+
+.header {
+  display: flex;
+  flex-direction: row;
+}

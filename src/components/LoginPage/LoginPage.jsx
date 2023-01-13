@@ -3,15 +3,17 @@ import LoginForm from '../LoginForm/LoginForm';
 import { useHistory } from 'react-router-dom';
 import logo from '../Images/happy_closet_icon.jpg';
 
+import './LoginPage.css';
+
 function LoginPage() {
   const history = useHistory();
 
   return (
-    <div classFor="login-page">
-      <img src={logo}></img>
-      <LoginForm />
+    <center>
+      <div classFor="login-page">
+        <img src={logo}></img>
+        <LoginForm />
 
-      <center>
         <p>--- OR ---</p>
         <button
           type="button"
@@ -22,8 +24,8 @@ function LoginPage() {
         >
           Register
         </button>
-      </center>
-    </div>
+      </div>
+    </center>
   );
 }
 
