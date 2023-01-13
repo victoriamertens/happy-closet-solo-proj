@@ -58,10 +58,10 @@ function AddItem() {
           id="category"
         >
           <option value="">Select a category</option>
-          <option value="tops">Tops</option>
-          <option value="bottoms">Bottoms</option>
-          <option value="dress-jumpsuit">Dress/Jumpsuit</option>
-          <option value="shoes">Shoes</option>
+          <option value="TOPS">Tops</option>
+          <option value="BOTTOMS">Bottoms</option>
+          <option value="DRESS-JUMPSUIT">Dress/Jumpsuit</option>
+          <option value="SHOES">Shoes</option>
         </select>
       </div>
       <label htmlFor="color">Color:</label>
@@ -69,7 +69,7 @@ function AddItem() {
         class="tesing"
         id="color"
         type="text"
-        onChange={(event) => setColor(event.target.value)}
+        onChange={(event) => setColor(event.target.value.toUpperCase())}
       ></input>
 
       <label htmlFor="cost">Initial Cost of Item:</label>
@@ -83,7 +83,7 @@ function AddItem() {
       <input
         id="brand"
         type="text"
-        onChange={(event) => setBrand(event.target.value)}
+        onChange={(event) => setBrand(event.target.value.toUpperCase())}
       ></input>
       <h2>Upload an Item Image:</h2>
       {uploadImg !== '' ? (
