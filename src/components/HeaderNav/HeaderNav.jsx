@@ -13,13 +13,13 @@ function Nav() {
       {/* If no user is logged in, show these links */}
       {!user.id && (
         // If there's no user, show login/registration links
-        <div class="nav">
-          <div>
+        <div className="nav">
+          <div className="navLink">
             <Link className="navLink" to="/about">
               About App
             </Link>
           </div>
-          <div>
+          <div className="navLink">
             <Link className="navLink" to="/login">
               Login / Register
             </Link>
@@ -35,7 +35,7 @@ function Nav() {
               <img src={logo}></img>
             </Link>
           </div>
-          <div>
+          <div className="navLink">
             <LogOutButton className="navLink" />
           </div>
         </div>
