@@ -22,7 +22,9 @@ function UploadImg(props) {
   return (
     <div>
       <form onSubmit={uploadFile}>
-        <label>Upload your picture</label>
+        <label>
+          <h4>Upload your picture</h4>
+        </label>
         <div class="upload">
           <div class="left">
             <input type="file" onChange={setFile} required />
