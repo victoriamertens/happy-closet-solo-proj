@@ -41,7 +41,7 @@ function MakeOutfitItem({ item }) {
     return (
       <div class="single-item" onClick={addOutfitToStore} key={item.id}>
         <img class="make-outfit" src={item.image_url}></img>
-        <p>Name: {item.name}</p>
+        <p> {item.name}</p>
       </div>
     );
   } else {

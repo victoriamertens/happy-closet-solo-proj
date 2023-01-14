@@ -28,4 +28,5 @@
 .filter img {
   width: 70px;
   padding-top: 3px;
+  border-radius: 4px;
 }
