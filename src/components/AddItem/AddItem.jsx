@@ -35,23 +35,60 @@ function AddItem() {
   };
 
   return (
-    <div class="add-item">
-      <label htmlFor="name">
-        <h2>What is your item's name?</h2>
-      </label>
-      <input
-        id="name"
-        type="text"
-        onChange={(event) => setName(event.target.value)}
-      ></input>
+    <div className="add-item">
+      <h2>What is your item's name?</h2>
+      <div className="input-container">
+        <label htmlFor="name">
+          <p>Name</p>
+        </label>
+        <input
+          id="name"
+          type="text"
+          onChange={(event) => setName(event.target.value)}
+        ></input>
+      </div>
       <p>
         Get Creative! This can be anything from 'Grandma's Vintage Sweater' to
         'Cassandra'.
       </p>
       <h2>Let's get a few more details:</h2>
 
+      <div className="input-container">
+        <label htmlFor="color">
+          <p>Color</p>
+        </label>
+        <input
+          class="tesing"
+          id="color"
+          type="text"
+          onChange={(event) => setColor(event.target.value.toUpperCase())}
+        ></input>
+      </div>
+      <div className="input-container">
+        <label htmlFor="cost">
+          <p>Initial Cost of Item</p>
+        </label>
+        <input
+          placeholder="Enter a number"
+          id="cost"
+          type="number"
+          onChange={(event) => setCost(event.target.value)}
+        ></input>
+      </div>
+      <div className="input-container">
+        <label htmlFor="brand">
+          <p>Brand/Maker</p>
+        </label>
+        <input
+          id="brand"
+          type="text"
+          onChange={(event) => setBrand(event.target.value.toUpperCase())}
+        ></input>
+      </div>
       <div id="selector">
-        <label for="category">Choose a category:</label>
+        <label for="category">
+          <h4>Choose a category:</h4>
+        </label>
         <select
           onChange={(event) => setCategory(event.target.value)}
           name="category"
@@ -64,27 +101,6 @@ function AddItem() {
           <option value="SHOES">Shoes</option>
         </select>
       </div>
-      <label htmlFor="color">Color:</label>
-      <input
-        class="tesing"
-        id="color"
-        type="text"
-        onChange={(event) => setColor(event.target.value.toUpperCase())}
-      ></input>
-
-      <label htmlFor="cost">Initial Cost of Item:</label>
-      <input
-        placeholder="Enter a number"
-        id="cost"
-        type="number"
-        onChange={(event) => setCost(event.target.value)}
-      ></input>
-      <label htmlFor="brand">Brand/Maker:</label>
-      <input
-        id="brand"
-        type="text"
-        onChange={(event) => setBrand(event.target.value.toUpperCase())}
-      ></input>
       <h2>Upload an Item Image:</h2>
       {uploadImg !== '' ? (
         <></>
@@ -95,7 +111,7 @@ function AddItem() {
             console.log(show);
           }}
         >
-          Add Photo
+          <h2>Add Photo</h2>
         </button>
       )}
 
