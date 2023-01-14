@@ -39,10 +39,9 @@ function MakeOutfitItem({ item }) {
   }
   if (item.in_closet) {
     return (
-      <div class="item" onClick={addOutfitToStore} key={item.id}>
-        <p>Name: {item.name}</p>
+      <div class="single-item" onClick={addOutfitToStore} key={item.id}>
         <img class="make-outfit" src={item.image_url}></img>
-        {console.log('outfit:', inOutfit)}
+        <p>Name: {item.name}</p>
       </div>
     );
   } else {
