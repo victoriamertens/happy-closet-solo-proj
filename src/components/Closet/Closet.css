@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .closet-items img {
@@ -19,9 +20,16 @@
 .single-item p {
   padding: 10px 20px;
 
+  width: 162px;
+  height: 35px;
   border-radius: 5px;
-  background-color: rgb(244, 239, 99);
-  margin-bottom: -10px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  background-color: rgb(200, 247, 245);
+  background: linear-gradient(rgb(200, 247, 245), rgb(170, 247, 243));
+  margin-top: -70px;
+  /* border: 3px solid rgb(3, 250, 230); */
+  text-align: center;
 }
 
 .single-item img {
@@ -30,4 +38,12 @@
   position: relative;
   border-radius: 5px;
   box-shadow: 10px 10px 15px rgb(33, 106, 100);
+  border: 1px solid rgb(200, 247, 245);
+}
+
+.single-item img {
+  width: 200px;
+  height: 350px;
+  margin: 20px;
+  object-fit: cover;
 }

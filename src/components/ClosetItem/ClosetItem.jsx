@@ -11,8 +11,10 @@ function ClosetItem({ item }) {
   if (item.in_closet) {
     return (
       <div className="single-item" onClick={navigateDetails}>
-        <p>{item.name}</p>
         <img key={item.id} src={item.image_url}></img>
+        <p>
+          <strong>{item.name}</strong>
+        </p>
       </div>
     );
   } else {
