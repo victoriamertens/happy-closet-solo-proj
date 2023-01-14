@@ -8,6 +8,10 @@ import Smile from '@mui/icons-material/SentimentVerySatisfiedOutlined';
 import Okay from '@mui/icons-material/SentimentSatisfied';
 import Frown from '@mui/icons-material/SentimentVeryDissatisfied';
 
+import smile from '../Images/smile-test.jpg';
+import okay from '../Images/okay-test.jpg';
+import frown from '../Images/frown-test.jpg';
+
 function Outfits() {
   const dispatch = useDispatch();
   const store = useSelector((store) => store.outfits);
@@ -41,13 +45,13 @@ function Outfits() {
         <div class="filter">
           <p>Fitler By:</p>
           <button id="smile" onClick={filterBySmile}>
-            <Smile />
+            <img src={smile}></img>
           </button>
           <button id="okay" onClick={filterByOkay}>
-            <Okay />
+            <img src={okay}></img>
           </button>
           <button id="frown" onClick={filterByFrown}>
-            <Frown />
+            <img src={frown}></img>
           </button>
           <button id="none" onClick={filterByNone}>
             No Filter
