@@ -5,52 +5,123 @@
   border-radius: 5px;
   margin: auto;
   margin-bottom: 25px;
-
   border: 5px solid transparent;
+  box-shadow: 5px 5px 15px rgb(157, 143, 100);
+  padding: 5px;
+}
+
+.smile {
   border-image: linear-gradient(
     to bottom right,
-    #27f1fc 0%,
-    #eef439 25%,
-    #03f1f9 50%,
-    #f3eb5c 75%,
-    #18d7fd 100%
+    #09ac03 0%,
+    #74f439 25%,
+    #27f242 50%,
+    #5df642 75%,
+    #79f583 100%
+  );
+  border-image-slice: 1;
+  border-radius: 10px;
+  width: 80%;
+}
+.okay {
+  border-image: linear-gradient(
+    to bottom right,
+    #faa303 0%,
+    #f3ac27 25%,
+    #f5bc53 50%,
+    #efc270 75%,
+    #f5d08c 100%
+  );
+  border-image-slice: 1;
+  border-radius: 10px;
+  width: 80%;
+}
+.frown {
+  border-image: linear-gradient(
+    to bottom right,
+    #fa03d5 0%,
+    #e752d1 25%,
+    #eba9e1 50%,
+    #fa039f 75%,
+    #fa039f 100%
   );
   border-image-slice: 1;
   border-radius: 10px;
   width: 80%;
 }
 
+.card-bottom {
+  height: 200px;
+  width: 100%;
+
+  border-radius: 100% 0% 0% 0% / 100% 50% 50% 100%;
+  display: grid;
+  place-items: center;
+}
+
+.okay .card-bottom {
+  background: linear-gradient(#f95f06, #f38246);
+}
+.smile .card-bottom {
+  background: linear-gradient(#63f906, #80e475);
+}
+
+.frown .card-bottom {
+  background: linear-gradient(#f16591, #f34657);
+}
+
+.img-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+/* .outfit-card-smile img {
+  width: 35%;
+  margin: 10px;
+} */
+
 .images {
   display: flex;
   flex-direction: row;
-  margin: 10px;
+  margin: 10px 10px -100px 10px;
   padding: 10px;
-  /* border: 1px solid black; */
   width: 90%;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
+  position: relative;
 }
 
-.outfit-card img {
-  width: 35%;
+.outfit-card .images img {
+  width: 150px;
+  height: 200px;
   margin: 10px;
+  border-radius: 5px;
+  /* border: 3px solid orange; */
+  object-fit: cover;
+}
+.smile .images img {
+  border: 3px solid rgb(3, 195, 3);
+}
+.okay .images img {
+  border: 3px solid rgb(245, 168, 2);
+}
+.frown .images img {
+  border: 3px solid rgb(249, 2, 93);
 }
 
-.reaction {
-  /* border: 1px solid black; */
+.comment-container {
   display: flex;
   flex-direction: column;
-  margin: 10px 10px 10px -10px;
-  font-size: large;
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 5px;
-  justify-content: center;
+  align-items: flex-end;
 }
 
-.card-top {
-  display: flex;
-  flex-direction: row;
-  border: 1px solid black;
-  margin: 10px;
+.comment {
+  margin-top: -125px;
+  margin-bottom: 50px;
+  padding-right: 10px;
+  width: 60%;
+}
+
+.reaction img {
+  width: 200px;
 }
