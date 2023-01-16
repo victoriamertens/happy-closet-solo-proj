@@ -58,3 +58,9 @@
   text-shadow: black 3px 3px 3px;
   letter-spacing: 3px;
 }
+
+.navLink button h3 {
+  border: 2px solid #04716b;
+  padding: 20px;
+  border-radius: 5px;
+}
