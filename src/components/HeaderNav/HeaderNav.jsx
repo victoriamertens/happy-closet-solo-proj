@@ -21,12 +21,16 @@ function Nav() {
         <div className="nav">
           <div className="navLink">
             <Link className="navLink" to="/about">
-              About App
+              <h3>
+                <strong>About App</strong>
+              </h3>
             </Link>
           </div>
           <div className="navLink">
             <Link className="navLink" to="/login">
-              Login / Register
+              <h3>
+                <strong>Login / Register</strong>
+              </h3>
             </Link>
           </div>
         </div>
@@ -48,6 +52,9 @@ function Nav() {
           )}
           {location === '/makeoutfitcomment' && (
             <h1 class="header-title">Make Outfit</h1>
+          )}
+          {location === '/about' && (
+            <h1 class="header-title">About Happy Closet</h1>
           )}
 
           <div className="navLink">

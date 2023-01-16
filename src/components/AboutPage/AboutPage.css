@@ -2,12 +2,15 @@
   width: 100px;
   height: 100px;
   object-fit: cover;
+  margin: 15px;
+  border-radius: 5px;
 }
 
 #technologies {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 #about-images {
@@ -16,7 +19,60 @@
   justify-content: space-around;
 }
 
-.about-page h1 {
-  margin: auto;
+.section {
+  display: flex;
+  flex-direction: row;
+
+  background-color: rgba(0, 187, 255, 0.25);
+  margin: 20px;
+  /* padding: 15px; */
+  border-radius: 10px;
+  box-shadow: 10px 10px 15px rgba(1, 14, 18, 0.637);
+  background: linear-gradient(rgb(127, 233, 233), rgba(233, 240, 126, 0.25));
+}
+
+.logo {
+  width: 200px;
+  height: 200px;
+}
+
+.profile {
+  width: 300px;
+  border-radius: 10px;
+}
+.qrcode {
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+  margin-left: -30px;
+  border: 3px solid rgb(4, 149, 246);
+}
+
+.left-side {
+  width: 30%;
+  /* margin: auto; */
+
+  background-color: rgba(6, 238, 238, 0.762);
+  padding: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px 0px 0px 10px;
+}
+
+.right-side {
+  width: 70%;
+  padding: 15px;
+}
+
+.profile-pics {
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.section p {
+  font-size: 18px;
 }

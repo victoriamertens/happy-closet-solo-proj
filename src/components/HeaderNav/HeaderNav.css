@@ -37,6 +37,7 @@
   cursor: pointer;
   outline: 0;
   text-shadow: black 3px 3px 3px;
+  letter-spacing: 1px;
 }
 
 .header {
@@ -55,4 +56,5 @@
 .header-title {
   color: white;
   text-shadow: black 3px 3px 3px;
+  letter-spacing: 3px;
 }
