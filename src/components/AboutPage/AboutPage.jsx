@@ -26,11 +26,11 @@ function AboutPage() {
           </div>
           <div className="right-side">
             <p>
-              ○ Happy Closet was built to help lessen the burden of picking an
+              ⊛ Happy Closet was built to help lessen the burden of picking an
               outfit.
             </p>
             <p>
-              ○ Users save items in their closet and log outfits they wear,
+              ⊛ Users save items in their closet and log outfits they wear,
               allowing the app to store the information and use it to help the
               user decide what to wear.
             </p>
@@ -70,14 +70,14 @@ function AboutPage() {
           </div>
         </div>
         <div className="special-thanks section">
-          <div className="right-side">
-            <h2>Special thanks to:</h2>
-
+          <h2>Special thanks to:</h2>
+          <div className="bump-right">
             <p>
-              Prime Academy, my instructors Liz and Dane, and the Shawl Cohort.
+              ⊛ Prime Academy, my instructors Liz and Dane, and the Shawl
+              Cohort.
             </p>
-            <p> My люблю! </p>
-            <p>My family!</p>
+            <p> ⊛ My люблю! </p>
+            <p>⊛ My family!</p>
           </div>
         </div>
       </div>

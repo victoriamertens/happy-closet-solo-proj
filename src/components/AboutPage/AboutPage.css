@@ -23,12 +23,13 @@
   display: flex;
   flex-direction: row;
 
-  background-color: rgba(0, 187, 255, 0.25);
+  /* background-color: rgba(0, 187, 255, 0.25); */
   margin: 20px;
+  border: rgba(1, 4, 65, 0.613) 3px solid;
   /* padding: 15px; */
   border-radius: 10px;
   box-shadow: 10px 10px 15px rgba(1, 14, 18, 0.637);
-  background: linear-gradient(rgb(127, 233, 233), rgba(233, 240, 126, 0.25));
+  background: linear-gradient(white, rgba(4, 245, 237, 0.18));
 }
 
 .logo {
@@ -45,7 +46,7 @@
   height: 150px;
   border-radius: 10px;
   margin-left: -30px;
-  border: 3px solid rgb(4, 149, 246);
+  border: 3px solid rgba(2, 45, 120, 0.618);
 }
 
 .left-side {
@@ -75,4 +76,18 @@
 }
 .section p {
   font-size: 18px;
+}
+
+.special-thanks {
+  display: flex;
+  flex-direction: column;
+}
+
+.bump-right {
+  margin-left: 50px;
+}
+
+.special-thanks h2 {
+  margin: 20px;
+  margin-bottom: 10px;
 }
