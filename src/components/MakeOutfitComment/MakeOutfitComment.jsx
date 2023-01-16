@@ -50,13 +50,25 @@ function MakeOutfitComment() {
           <h4>Select your reaction:</h4>
         </div>
         <div>
-          <button class="reaction" id="smile-reaction" onClick={smileReaction}>
+          <button
+            class="reaction-btn"
+            id="smile-reaction"
+            onClick={smileReaction}
+          >
             <img src={smile}></img>
           </button>
-          <button class="reaction" id="okay-reaction" onClick={lineReaction}>
+          <button
+            class="reaction-btn"
+            id="okay-reaction"
+            onClick={lineReaction}
+          >
             <img src={okay}></img>
           </button>
-          <button class="reaction" id="frown-reaction" onClick={frownReaction}>
+          <button
+            class="reaction-btn"
+            id="frown-reaction"
+            onClick={frownReaction}
+          >
             <img src={frown}></img>
           </button>
         </div>
