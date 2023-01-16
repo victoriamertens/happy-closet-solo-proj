@@ -4,6 +4,11 @@ import { useHistory } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 import ModalSuccess from '../ModalSuccess2/ModalSuccess2.jsx';
+import './MakeOutfitReview.css';
+
+import smile from '../Images/smile-test.jpg';
+import okay from '../Images/okay-test.jpg';
+import frown from '../Images/frown-test.jpg';
 
 function MakeOutfitReview() {
   const items = useSelector((store) => store.newOutfit);
@@ -27,19 +32,47 @@ function MakeOutfitReview() {
     return 'Putting your outfit together';
   } else {
     return (
-      <div>
+      <div id="review-outfit-container">
+        <h1 className="header">Your Outfit</h1>
         <div id="outfit-items">
           {items.map((item) => {
-            return <img src={item.image}></img>;
+            return (
+              <div className="item-images">
+                <img src={item.image}></img>
+              </div>
+            );
           })}
         </div>
-        <div id="outfit-comments">
-          {comments.reaction === 1 && <p>Reaction: :)</p>}
-          {comments.reaction === 2 && <p>Reaction: :/</p>}
-          {comments.reaction === 3 && <p>Reaction: :(</p>}
-          <p>Comments: {comments.comment}</p>
+        <div className="review-card-bottom">
+          <div id="outfit-comments">
+            {comments.reaction === 1 && (
+              <div className="reaction-comment">
+                <h3>Reaction: </h3>
+                <img src={smile}></img>
+              </div>
+            )}
+            {comments.reaction === 2 && (
+              <div className="reaction-comment">
+                <h3>Reaction: </h3>
+                <img src={okay}></img>
+              </div>
+            )}
+            {comments.reaction === 3 && (
+              <div className="reaction-comment">
+                <h3>Reaction: </h3>
+                <img src={frown}></img>
+              </div>
+            )}
+          </div>
+
+          <div className="review-comment-container">
+            <h3>Comments:</h3>
+            <p> "{comments.comment}"</p>
+          </div>
         </div>
-        <button onClick={postOutfit}> Add to Outfit Log</button>
+        <button className="review-btn" onClick={postOutfit}>
+          <h2>Add to Outfit Log</h2>
+        </button>
         <div className="success">
           <ModalSuccess
             onClose={() => {

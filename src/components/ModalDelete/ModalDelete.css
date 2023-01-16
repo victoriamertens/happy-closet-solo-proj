@@ -13,6 +13,9 @@
 .modal-content-remove {
   width: 500px;
   background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .modal-header-remove,
@@ -28,4 +31,18 @@
   padding: 10px;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-body-remove button {
+  height: 30px;
+}
+
+.modal-body-remove h3 {
+  padding: 20px;
+}
+.modal-body-remove img {
+  border-radius: 100px;
 }

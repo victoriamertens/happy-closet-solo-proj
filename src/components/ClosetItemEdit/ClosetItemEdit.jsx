@@ -10,6 +10,7 @@ function ClosetItemEdit(props) {
   const dispatch = useDispatch();
   const history = useHistory();
   const { id } = useParams();
+  const field = props.field.toUpperCase();
 
   function editField() {
     setEditBtn(!editBtn);
@@ -31,20 +32,24 @@ function ClosetItemEdit(props) {
     }
   }
 
-  if (!editBtn && props.field === 'image_url') {
-    return (
-      <div class="edit-field">
-        <img src={props.data}></img>
-        <button onClick={editField}>Edit</button>
-      </div>
-    );
-  }
+  // if (!editBtn && props.field === 'image_url') {
+  //   return (
+  //     <div class="edit-image">
+  //       <div>
+  //         <img src={props.data}></img>
+  //       </div>
+  //       <div>
+  //         <p></p>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   if (!editBtn) {
     return (
       <div class="edit-field">
         <p>
-          {props.field} : {props.data}
+          {field} : {props.data}
         </p>
         <button onClick={editField}>Edit</button>
       </div>
@@ -54,7 +59,7 @@ function ClosetItemEdit(props) {
   if (editBtn) {
     return (
       <div class="edit-field">
-        <label for={props.field}>{props.field}</label>
+        <label for={props.field}>{field}</label>
         <input
           id={props.field}
           placeholder={props.data}

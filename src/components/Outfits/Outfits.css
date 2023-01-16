@@ -1,18 +1,14 @@
-#outfit-header {
-}
-
 .filter {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  margin: 0px 10px 15px 0px;
+  margin: 0px 10px 25px 0px;
+  align-items: center;
 }
 
 .filter button {
-  padding: 5px;
   margin: 5px;
   border-radius: 5px;
-  border: 1px solid black;
 }
 
 #smile {
@@ -26,6 +22,20 @@
   background-color: red;
 }
 
+#none {
+  width: 80px;
+  height: 80px;
+}
 #outfit-header h1 {
   margin-left: 10px;
+}
+
+.filter img {
+  width: 70px;
+  padding-top: 3px;
+  border-radius: 4px;
+}
+.filter p {
+  font-size: 20px;
+  margin-right: 10px;
 }

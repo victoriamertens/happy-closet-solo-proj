@@ -34,19 +34,28 @@ function ClosetDetails() {
 
   return (
     <div class="item-details">
-      <div class="container">
-        <h2 class="name">{details.name}</h2>
-        <img id="details-img" src={details.image_url}></img>
-        <p>Cost: {details.cost}</p>
-        <p>Color: {details.color}</p>
-        <p>Category: {details.category}</p>
+      <div className="container-details">
+        <div className="container-left">
+          <h2 class="name">{details.name}</h2>
+          <img id="details-img" src={details.image_url}></img>
+        </div>
+        <div className="container-right">
+          <h3>Cost:</h3>
+          <p>- ${details.cost}</p>
+          <h3>Color:</h3>
+          <p>- {details.color}</p>
+          <h3>Category:</h3>
+          <p>- {details.category_name}</p>
+          <h3>Brand: </h3>
+          <p>- {details.brand}</p>
+        </div>
       </div>
       <div class="buttons">
         <button id="edit" onClick={editItem}>
-          Edit
+          <h3>Edit</h3>
         </button>
         <button id="delete" onClick={() => setShow(true)}>
-          Remove From Closet
+          <h3>Remove From Closet</h3>
         </button>
         <ModalDelete
           onClose={() => {

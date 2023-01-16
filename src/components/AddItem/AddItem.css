@@ -7,11 +7,12 @@
 
 .add-item p {
   padding: 0px 10px;
-  margin: 0px;
+  margin: auto;
 }
 
 .add-item input {
   height: 40px;
+  color: rgb(2, 71, 71);
 }
 
 #selector {
@@ -26,13 +27,19 @@
 }
 
 #selector select {
-  height: 30px;
+  height: 68px;
+  width: 500px;
+  padding: 10px;
 }
 
 .add-item button {
   height: 50px;
   background-color: rgb(8, 147, 147);
-  color: black;
+  border-radius: 5px;
+}
+.add-item button h2 {
+  margin: 0px;
+  color: white;
 }
 
 .image {
@@ -44,4 +51,25 @@
   margin-top: 20px;
   border-radius: 5px;
   border: none;
+}
+
+.input-container {
+  border: solid 1px black;
+  position: relative;
+  padding: 0 8px;
+  margin-bottom: 20px;
+}
+
+.input-container input {
+  border: none;
+  outline: 0;
+  font-size: 25px;
+  padding-top: 10px;
+}
+
+.input-container label {
+  position: absolute;
+  font-size: 20px;
+  margin-top: -10px;
+  background-color: white;
 }
