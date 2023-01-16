@@ -1,9 +1,22 @@
 #technologies img {
-  width: 60px;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
 }
 
 #technologies {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+}
+
+#about-images {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.about-page h1 {
+  margin: auto;
+  width: 100%;
 }

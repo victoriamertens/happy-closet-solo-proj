@@ -41,13 +41,13 @@ function ClosetDetails() {
         </div>
         <div className="container-right">
           <h3>Cost:</h3>
-          <h4>- ${details.cost}</h4>
+          <p>- ${details.cost}</p>
           <h3>Color:</h3>
-          <h4>- {details.color}</h4>
+          <p>- {details.color}</p>
           <h3>Category:</h3>
-          <h4>- {details.category_name}</h4>
+          <p>- {details.category_name}</p>
           <h3>Brand: </h3>
-          <h4>- {details.brand}</h4>
+          <p>- {details.brand}</p>
         </div>
       </div>
       <div class="buttons">
