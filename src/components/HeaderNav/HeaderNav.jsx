@@ -5,8 +5,13 @@ import './HeaderNav.css';
 import { useSelector } from 'react-redux';
 import logo from '../Images/happy_closet_icon.jpg';
 
+import { useParams, useLocation } from 'react-router-dom';
+
 function Nav() {
   const user = useSelector((store) => store.user);
+  const page = useParams();
+  const location = useLocation().pathname;
+  console.log('PAGE:', location);
 
   return (
     <>
@@ -35,6 +40,16 @@ function Nav() {
               <img src={logo}></img>
             </Link>
           </div>
+          {location === '/outfits' && <h1 class="header-title">Outfits</h1>}
+          {location === '/additem' && <h1 class="header-title">Add Item</h1>}
+          {location === '/closet' && <h1 class="header-title">Closet</h1>}
+          {location === '/makeoutfit' && (
+            <h1 class="header-title">Make Outfit</h1>
+          )}
+          {location === '/makeoutfitcomment' && (
+            <h1 class="header-title">Make Outfit</h1>
+          )}
+
           <div className="navLink">
             <LogOutButton className="navLink" />
           </div>

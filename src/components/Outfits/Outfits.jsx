@@ -41,7 +41,6 @@ function Outfits() {
   return (
     <div>
       <div id="outfit-header">
-        <h1>Your Outfits</h1>
         <div class="filter">
           <p>Fitler By:</p>
           <button id="smile" onClick={filterBySmile}>
