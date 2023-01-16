@@ -14,7 +14,7 @@ function ModalDelete(props) {
         onClick={(e) => e.stopPropagation()}
       >
         <div className="modal-header-remove">
-          <h4>Remove Item</h4>
+          <h2>Remove Item</h2>
         </div>
         <div className="modal-body-remove">
           <img src={logo}></img>
