@@ -1,5 +1,5 @@
 import React from 'react';
-import LogOutButton from '../LogOutButton/LogOutButton';
+
 import { useSelector } from 'react-redux';
 
 import logo from '../Images/happy_closet_icon.jpg';
@@ -10,12 +10,15 @@ import './UserPage.css';
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
+
   return (
     <div className="container">
-      <h2>Welcome, {user.name}!</h2>
-      <img src={logo}></img>
-      <img src={logo2}></img>
-      <img src={logo3}></img>
+      <h1>Welcome, {user.name}!</h1>
+      <div id="logo-container">
+        <img id="logo-2" src={logo2}></img>
+        <img id="logo-1" src={logo}></img>
+        <img id="logo-3" src={logo3}></img>
+      </div>
     </div>
   );
 }
