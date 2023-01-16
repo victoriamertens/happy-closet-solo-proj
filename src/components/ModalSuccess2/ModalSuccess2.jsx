@@ -11,14 +11,14 @@ function ModalSuccess2(props) {
       {console.log('in modal success 2 ')}
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
-          <h4>Success</h4>
+          <h2>Success</h2>
         </div>
         <div className="modal-body">
           <img src={logo}></img>
           {props.component === 'item' ? (
-            <p>Your item is now on a hanger in your closet!</p>
+            <h3>Your item is now on a hanger in your closet!</h3>
           ) : (
-            <p>Your outfit is saved!</p>
+            <h3>Your outfit is saved!</h3>
           )}
         </div>
         <div className="modal-footer">

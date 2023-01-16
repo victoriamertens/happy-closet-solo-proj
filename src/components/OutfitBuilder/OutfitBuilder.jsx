@@ -18,11 +18,7 @@ function OutfitBuilder() {
   };
 
   if (outfitItems.length === 0) {
-    return (
-      <div class="outfit-builder">
-        <p>Testing empty store</p>
-      </div>
-    );
+    return <></>;
   }
 
   return (
@@ -31,16 +27,23 @@ function OutfitBuilder() {
         {outfitItems.map((item) => {
           return (
             <div class="img-card">
+              <div className="button-container">
+                <button id={item.id} onClick={removeItem} class="x-button">
+                  x
+                </button>
+              </div>
               <img src={item.image}></img>
-              <button id={item.id} onClick={removeItem} class="x-button">
-                X
-              </button>
             </div>
           );
         })}
+        <div className="next-btn-container">
+          <button id="next-btn" onClick={nextStep}>
+            Next Step
+          </button>
+        </div>
       </div>
       <div id="builder-button">
-        <button onClick={nextStep}>Next</button>
+        <div></div>
       </div>
     </div>
   );

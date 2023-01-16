@@ -5,8 +5,13 @@ import './HeaderNav.css';
 import { useSelector } from 'react-redux';
 import logo from '../Images/happy_closet_icon.jpg';
 
+import { useParams, useLocation } from 'react-router-dom';
+
 function Nav() {
   const user = useSelector((store) => store.user);
+  const page = useParams();
+  const location = useLocation().pathname;
+  console.log('PAGE:', location);
 
   return (
     <>
@@ -16,12 +21,16 @@ function Nav() {
         <div className="nav">
           <div className="navLink">
             <Link className="navLink" to="/about">
-              About App
+              <h3>
+                <strong>About App</strong>
+              </h3>
             </Link>
           </div>
           <div className="navLink">
             <Link className="navLink" to="/login">
-              Login / Register
+              <h3>
+                <strong>Login / Register</strong>
+              </h3>
             </Link>
           </div>
         </div>
@@ -35,6 +44,19 @@ function Nav() {
               <img src={logo}></img>
             </Link>
           </div>
+          {location === '/outfits' && <h1 class="header-title">Outfits</h1>}
+          {location === '/additem' && <h1 class="header-title">Add Item</h1>}
+          {location === '/closet' && <h1 class="header-title">Closet</h1>}
+          {location === '/makeoutfit' && (
+            <h1 class="header-title">Make Outfit</h1>
+          )}
+          {location === '/makeoutfitcomment' && (
+            <h1 class="header-title">Make Outfit</h1>
+          )}
+          {location === '/about' && (
+            <h1 class="header-title">About Happy Closet</h1>
+          )}
+
           <div className="navLink">
             <LogOutButton className="navLink" />
           </div>

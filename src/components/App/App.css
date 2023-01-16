@@ -110,3 +110,7 @@ input {
   margin: 5px;
   margin-bottom: 10px;
 }
+
+.login-page img {
+  border-radius: 100px;
+}

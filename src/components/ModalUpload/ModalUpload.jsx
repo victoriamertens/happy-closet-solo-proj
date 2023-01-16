@@ -18,10 +18,10 @@ function ModalDelete(props) {
         <div className="modal-header-upload">
           <div class="left-header">
             <img class="modal-img" src={logo}></img>
-            <h3>Upload Item</h3>
+            <h2>Upload Item</h2>
           </div>
           <div class="right-header">
-            <button class="close" onClick={props.onClose}>
+            <button className="close" onClick={props.onClose}>
               X
             </button>
           </div>
