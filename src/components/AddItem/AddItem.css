@@ -3,16 +3,22 @@
   flex-direction: column;
   margin: 20px;
   padding: 10px;
+  margin-top: 0px;
+  padding-top: 0px;
 }
 
 .add-item p {
   padding: 0px 10px;
   margin: auto;
+  margin-bottom: 10px;
+}
+.add-item h2 {
+  margin-top: 5px;
 }
 
 .add-item input {
   height: 40px;
-  color: rgb(2, 71, 71);
+  color: rgb(70, 71, 2);
 }
 
 #selector {
@@ -34,12 +40,12 @@
 
 .add-item button {
   height: 50px;
-  background-color: rgb(8, 147, 147);
+  background-color: rgb(247, 220, 66);
   border-radius: 5px;
 }
 .add-item button h2 {
   margin: 0px;
-  color: white;
+  color: black;
 }
 
 .image {
