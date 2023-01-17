@@ -33,6 +33,7 @@
   width: 250px;
   border-radius: 5px;
   box-shadow: 10px 10px 15px grey;
+  object-fit: cover;
 }
 
 .edit-details {
@@ -40,6 +41,7 @@
   flex-direction: column;
   align-items: center;
   margin-top: 100px;
+  object-fit: cover;
 }
 .edit-container {
   display: flex;

@@ -23,7 +23,9 @@
 #details-img {
   padding: 10px;
   border-radius: 5px;
-  width: 400px;
+  width: 375px;
+  height: 490px;
+  object-fit: cover;
 }
 
 .container-details {
