@@ -10,7 +10,7 @@ const AWS = require('aws-sdk');
 const S3 = new AWS.S3();
 
 //importing key and secret key
-require('dotenv').config();
+// require('dotenv').config();
 
 //MULTER BELOW
 let storage = multer.diskStorage({});
