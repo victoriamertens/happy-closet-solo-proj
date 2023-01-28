@@ -17,6 +17,8 @@ let storage = multer.diskStorage({});
 //using disk storage's default setting to store file in memory
 let upload = multer({ storage: storage });
 
+console.log('KEY:', process.env.aws_access_key_id);
+
 //AWS Configure for access keys
 AWS.config.update({
   accessKeyId: process.env.aws_access_key_id,
@@ -26,9 +28,10 @@ AWS.config.update({
 
 //Below is testing proper credentials
 AWS.config.getCredentials(function (err) {
-  if (err) console.log(err.stack);
-  // credentials not loaded
-  else {
+  if (err) {
+    console.log(err.stack);
+  } else {
+    // credentials not loaded
     console.log('Access key:', AWS.config.credentials.accessKeyId);
   }
 });
