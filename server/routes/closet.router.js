@@ -9,6 +9,10 @@ const {
  * GET route template
  */
 router.get('/', rejectUnauthenticated, (req, res) => {
+  console.log('aws_access_key_id:', process.env.aws_access_key_id);
+  console.log('aws_secret_access_key:', process.env.aws_secret_access_key);
+  console.log('DATABASE_URL:', process.env.DATABASE_URL);
+  console.log('SERVER_SESSION_SECRET:', process.env.SERVER_SESSION_SECRET);
   // GET route code here
   console.log('In closet GET router:', req.user);
   let queryTextGet = `
