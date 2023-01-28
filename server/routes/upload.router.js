@@ -30,6 +30,8 @@ AWS.config.getCredentials(function (err) {
     console.log(
       'Access key:',
       AWS.config.credentials.accessKeyId,
+      'Secret Acces key:',
+      AWS.config.credentials.secretAccessKey,
       'S3_Bucket:',
       process.env.S3_BUCKET
     );
