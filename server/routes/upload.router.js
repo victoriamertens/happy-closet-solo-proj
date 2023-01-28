@@ -7,7 +7,6 @@ const multer = require('multer');
 const fs = require('fs');
 //using aws dev kit to handle the upload process
 const AWS = require('aws-sdk');
-const S3 = new AWS.S3();
 
 //MULTER BELOW
 let storage = multer.diskStorage({});
@@ -20,6 +19,7 @@ AWS.config.update({
   secretAccessKey: process.env.aws_secret_access_key,
   region: 'us-east-2',
 });
+const S3 = new AWS.S3();
 
 //Below is testing proper credentials
 AWS.config.getCredentials(function (err) {
