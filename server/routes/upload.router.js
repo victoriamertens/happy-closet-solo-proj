@@ -17,8 +17,6 @@ let storage = multer.diskStorage({});
 //using disk storage's default setting to store file in memory
 let upload = multer({ storage: storage });
 
-console.log('KEY:', process.env.aws_access_key_id);
-
 //AWS Configure for access keys
 AWS.config.update({
   accessKeyId: process.env.aws_access_key_id,
@@ -32,7 +30,12 @@ AWS.config.getCredentials(function (err) {
     console.log(err.stack);
   } else {
     // credentials not loaded
-    console.log('Access key:', AWS.config.credentials.accessKeyId);
+    console.log(
+      'Access key:',
+      AWS.config.credentials.accessKeyId,
+      'S3_Bucket:',
+      AWS.config.credentials.S3_BUCKET
+    );
   }
 });
 
@@ -45,7 +48,7 @@ router.post('/', upload.single('file'), async (req, res) => {
 
     fileStream.on('open', () => {
       uploadParams = {
-        Bucket: 'myclosetbucket234q4623434532',
+        Bucket: process.env.S3_BUCKET,
         Key: 'closetimages/' + file.filename,
         Body: fileStream,
         ACL: 'public-read',
