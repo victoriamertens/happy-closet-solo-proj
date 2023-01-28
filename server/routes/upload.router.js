@@ -9,9 +9,6 @@ const fs = require('fs');
 const AWS = require('aws-sdk');
 const S3 = new AWS.S3();
 
-//importing key and secret key
-// require('dotenv').config();
-
 //MULTER BELOW
 let storage = multer.diskStorage({});
 //using disk storage's default setting to store file in memory
@@ -34,7 +31,7 @@ AWS.config.getCredentials(function (err) {
       'Access key:',
       AWS.config.credentials.accessKeyId,
       'S3_Bucket:',
-      AWS.config.credentials.S3_BUCKET
+      process.env.S3_BUCKET
     );
   }
 });
