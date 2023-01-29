@@ -2,7 +2,9 @@
 
 This version uses React, Redux, Express, AWS' software developer kit, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
 
-readme-media/Demo - long screenshare.mov
+<video width="520" height="340" controls>
+  <source src="documentation/demo_video.mp4" type="video/mp4">
+</video>
 
 ## Duration:
 
