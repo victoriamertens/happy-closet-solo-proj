@@ -2,9 +2,9 @@
 
 This version uses React, Redux, Express, AWS' software developer kit, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
 
-<video width="520" height="340" controls>
-  <source src="documentation/demo_video.mp4" type="video/mp4">
-</video>
+
+https://user-images.githubusercontent.com/111324946/215332181-f893990a-d2b9-427e-a3f6-8c872ea90cf5.mp4
+
 
 ## Duration:
 
