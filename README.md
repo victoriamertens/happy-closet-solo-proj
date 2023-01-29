@@ -1,15 +1,54 @@
+# Happy Closet
 
-# Prime Solo Project Starting Repo
-This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
+This version uses React, Redux, Express, AWS' software developer kit, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
 
-We **STRONGLY** recommend following these instructions carefully. It's a lot, and will take some time to set up, but your life will be much easier this way in the long run.
+readme-media/Demo - long screenshare.mov
 
-## Use the Template for This Repository (Don't Clone)
+## Duration:
 
-- Don't Fork or Clone. Instead, click the `Use this Template` button, and make a copy to your personal account. Make the project `PUBLIC`!
+3 Week Solo Project
 
+# Table of Contents
 
-## Prerequisites
+1. [Elevator Pitch](#elevator-pitch)
+2. [Project Description](#project-description)
+3. [Project Challenges: Amazon Web Services](#project-challenges)
+4. [Future Project Goals](#future-project-goals)
+5. [How to Run the Project](#how-to-run-the-project)
+
+## Elevator Pitch
+
+We have all been in this scenario. You wake up, open your closet doors, and immediately you are faced with an unpleasant emotion. Maybe you are running late and don’t have time to pick a nice outfit, maybe your closet is disorganized, or maybe you simply don’t know what to wear. Insert Happy Closet. Happy Closet acts as a virtual copy of your closet, allowing users to put together outfits based on the items in your closet. The application saves these outfits in a log to help users get ready in the morning.
+
+## Project Description
+
+From a software perspective, Happy Closet allows the user to do four major things:
+
+#### 1. Register as a unique user.
+
+The application uses Passport, an authentication middleware for Node.js, and BcryptJS to generate hash passwords, in order to create a user and keep their information secure.
+
+#### 2. Create a clothing 'item' in the user's closet database.
+
+An 'item' is a list of data that represents an article of clothing. The data includes a name, cost, color, brand, and category, along with a photograph of the item. The photo is uploaded to Amazon's Simple Storage Service (S3), where the image is stored in the cloud and accessible via a specific url. For more information on the process, visit [Amazon Web Services Website](https://aws.amazon.com/s3/).
+
+#### 3. Create an 'outfit' in the user's outfit log.
+
+An 'outfit' is a combination of items the user selects in the app. The user selects the items they wore, and adds data on their initial reaction rating to the outfit, and a comment about their thoughts on the outfit.
+
+#### 4. View both the user's items and past outfits.
+
+The user can view past outftis on the 'outfits', where they have the ability to filter the outfits based on what reaction rating they gave to each outfit. The user can also view the items in their 'closet' in the same way.
+
+## Project Challenges
+
+The biggest challenge I faced with this project was using Amazon's Simple Storage Service (S3) for image upload. One of my goals for this project was to stretch and challenge myself. S3 provided a great opportunity to challenge myself while also learning more about web operations. I cannot understate how much I learned from this challenge. Conceptually, it stretched my understanding of cloud-based storage, application security, local memory, and writing code for multiple environments with deployment, all of which has deepened how I think and talk about software development. Additionally, it taught me how to navigate lengthy and complex documentation. While it gave me a large headache at times, I developed an organized way to approach documentation to more efficiently find the answers I am looking for.
+
+## Future Project Goals
+
+Next steps for the project is implementing a statistics page where the user can have helpful data about the amount of times they have worn an item of clothing, the cost per wear of that item, and what items are worn the most and least. This feature was the reason I embarked on this project. I think clothes are a great tool for self expression, but closets can be very difficult to manage. I wanted an application that gave me data on my personal closet, so that I could keep it more organized and have a better sense of what clothes I actually wear and why.
+
+## How to Run the Project
 
 Before you get started, make sure you have the following software installed on your computer:
 
@@ -17,21 +56,13 @@ Before you get started, make sure you have the following software installed on y
 - [PostrgeSQL](https://www.postgresql.org/)
 - [Nodemon](https://nodemon.io/)
 
-## Create database and table
+#### Create database and table
 
-Create a new database called `prime_app` and create a `user` table:
+Create a new database called `happy_closet` and copy and paste the information in the database.sql file into PostgreSQL.
 
-```SQL
-CREATE TABLE "user" (
-    "id" SERIAL PRIMARY KEY,
-    "username" VARCHAR (80) UNIQUE NOT NULL,
-    "password" VARCHAR (1000) NOT NULL
-);
-```
+If you would like to name your database something else, you will need to change `happy_closet` to the name of your new database name in `server/modules/pool.js`.
 
-If you would like to name your database something else, you will need to change `prime_app` to the name of your new database name in `server/modules/pool.js`
-
-## Development Setup Instructions
+#### Development Setup Instructions
 
 - Run `npm install`
 - Create a `.env` file at the root of the project and paste this line into the file:
@@ -39,83 +70,6 @@ If you would like to name your database something else, you will need to change 
   SERVER_SESSION_SECRET=superDuperSecret
   ```
   While you're in your new `.env` file, take the time to replace `superDuperSecret` with some long random string like `25POUbVtx6RKVNWszd9ERB9Bb6` to keep your application secure. Here's a site that can help you: [https://passwordsgenerator.net/](https://passwordsgenerator.net/). If you don't do this step, create a secret with less than eight characters, or leave it as `superDuperSecret`, you will get a warning.
-- Start postgres if not running already by using `brew services start postgresql`
 - Run `npm run server`
 - Run `npm run client`
 - Navigate to `localhost:3000`
-
-## Debugging
-
-To debug, you will need to run the client-side separately from the server. Start the client by running the command `npm run client`. Start the debugging server by selecting the Debug button.
-
-![VSCode Toolbar](documentation/images/vscode-toolbar.png)
-
-Then make sure `Launch Program` is selected from the dropdown, then click the green play arrow.
-
-![VSCode Debug Bar](documentation/images/vscode-debug-bar.png)
-
-## Testing Routes with Postman
-
-To use Postman with this repo, you will need to set up requests in Postman to register a user and login a user at a minimum.
-
-Keep in mind that once you using the login route, Postman will manage your session cookie for you just like a browser, ensuring it is sent with each subsequent request. If you delete the `localhost` cookie in Postman, it will effectively log you out.
-
-1. Start the server - `npm run server`
-2. Import the sample routes JSON file [v2](./PostmanPrimeSoloRoutesv2.json) by clicking `Import` in Postman. Select the file.
-3. Click `Collections` and `Send` the following three calls in order:
-   1. `POST /api/user/register` registers a new user, see body to change username/password
-   2. `POST /api/user/login` will login a user, see body to change username/password
-   3. `GET /api/user` will get user information, by default it's not very much
-
-After running the login route above, you can try any other route you've created that requires a logged in user!
-
-## Production Build
-
-Before pushing to Heroku, run `npm run build` in terminal. This will create a build folder that contains the code Heroku will be pointed at. You can test this build by typing `npm start`. Keep in mind that `npm start` will let you preview the production build but will **not** auto update.
-
-- Start postgres if not running already by using `brew services start postgresql`
-- Run `npm start`
-- Navigate to `localhost:5000`
-
-## Lay of the Land
-
-There are a few videos linked below that show a walkthrough the client and sever setup to help acclimatize to the boilerplate. Please take some time to watch the videos in order to get a better understanding of what the boilerplate is like.
-
-- [Initial Set](https://vimeo.com/453297271)
-- [Server Walkthrough](https://vimeo.com/453297212)
-- [Client Walkthrough](https://vimeo.com/453297124)
-
-Directory Structure:
-
-- `src/` contains the React application
-- `public/` contains static assets for the client-side
-- `build/` after you build the project, contains the transpiled code from `src/` and `public/` that will be viewed on the production site
-- `server/` contains the Express App
-
-This code is also heavily commented. We recommend reading through the comments, getting a lay of the land, and becoming comfortable with how the code works before you start making too many changes. If you're wondering where to start, consider reading through component file comments in the following order:
-
-- src/components
-  - App/App
-  - Footer/Footer
-  - Nav/Nav
-  - AboutPage/AboutPage
-  - InfoPage/InfoPage
-  - UserPage/UserPage
-  - LoginPage/LoginPage
-  - RegisterPage/RegisterPage
-  - LogOutButton/LogOutButton
-  - ProtectedRoute/ProtectedRoute
-
-## Deployment
-
-1. Create a new Heroku project
-1. Link the Heroku project to the project GitHub Repo
-1. Create an Heroku Postgres database
-1. Connect to the Heroku Postgres database from Postico
-1. Create the necessary tables
-1. Add an environment variable for `SERVER_SESSION_SECRET` with a nice random string for security
-1. In the deploy section, select manual deploy
-
-## Update Documentation
-
-Customize this ReadMe and the code comments in this project to read less like a starter repo and more like a project. Here is an example: https://gist.github.com/PurpleBooth/109311bb0361f32d87a2
